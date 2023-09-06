@@ -145,6 +145,5 @@ export class AppModule {
     distServ.fillDataDistrict();
     roleServ.filldata();
     permissionserv.filldata();
-  // bular ochiq turaversin faqat birmarta qoshadigan qildim ******
   }
 }
