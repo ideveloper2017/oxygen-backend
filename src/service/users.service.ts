@@ -31,7 +31,7 @@ export class UsersService {
 
   public async createLogin(createUserDto: CreateUserDto) {
     try {
-      const role=await this.usersRepository.manager.getRepository(Roles).findOne({where:{id:createUserDto.role_id}})
+      const role=await this.usersRepository.manager.getRepository(Roles).find({where:{id:createUserDto.role_id}})
       const newUser = new Users();
       newUser.first_name = createUserDto.first_name;
       newUser.last_name = createUserDto.last_name;

@@ -26,7 +26,7 @@ export class Users extends Model {
 
   @OneToMany(type => Roles, roles => roles.users)
   @JoinColumn({name: 'role_id'})
-  roles: Roles
+  roles: Roles[]
 
   // @Column()
   // role_id: number
