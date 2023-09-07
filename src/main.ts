@@ -24,5 +24,4 @@ async function bootstrap() {
     console.log('Web', configService.get<string>('BASE_URL'));
   });
 }
-
 bootstrap();
