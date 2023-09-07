@@ -36,6 +36,7 @@ export class UsersService {
       newUser.first_name = createUserDto.first_name;
       newUser.last_name = createUserDto.last_name;
       newUser.username = createUserDto.username;
+      newUser.phone_number=createUserDto.phone_number;
       newUser.password = createUserDto.password;
       newUser.is_active = createUserDto.is_active;
       newUser.roles = role;
