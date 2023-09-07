@@ -5,7 +5,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule } from '@nestjs/swagger';
 import { swaggerConfig } from './options/swagger.option';
-import { ForeignKeyConstraintErrorFilter } from "./filters/foreignkey-error.filter";
+// import { ForeignKeyConstraintErrorFilter } from "./filters/foreignkey-error.filter";
 
 
 async function bootstrap() {
@@ -17,7 +17,7 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({ /*  whitelist: true , */ transform: true }),
   );
-  app.useGlobalFilters(new ForeignKeyConstraintErrorFilter())
+  // app.useGlobalFilters(new ForeignKeyConstraintErrorFilter())
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api/docs', app, swaggerDocument);
 
