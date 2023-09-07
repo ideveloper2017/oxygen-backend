@@ -34,8 +34,8 @@ export class BuildingsController {
   @ApiOperation({ summary: "id=0 -barcha binolar || id=4 bitta bino" })
   @Get('/all/:id')
   getAllBuildings(@Param('id',ParseIntPipe) id: number) {
-    return this.buildingsService.findAllBuildings(id).then(data => {
-      if(data!== null && data.length != 0){
+    return this.buildingsService.findAllBuildings(id).then((data) => {
+      if(!data){
         return {success: true,  data, message: 'Data fetched successfully'}
       }else {
         return {success: false, message: "No data found!"}

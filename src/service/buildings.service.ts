@@ -56,7 +56,6 @@ export class BuildingsService {
     }
     const result = await this.buildingRepository.manager.getRepository(Apartments)
       .save(records);
-
       return result;
     }
     async findAllBuildings(id: number) {
