@@ -30,8 +30,14 @@ export class UsersService {
   }
 
   public async createLogin(createUserDto: CreateUserDto) {
+    let role_id;
     try {
-      const role=await this.usersRepository.manager.getRepository(Roles).find({where:{id:createUserDto.role_id}})
+      const role= await this.usersRepository.manager.getRepository(Roles).find({where:{id:createUserDto.role_id}}).then((data)=>{
+        data.map(data=>{
+          role_id=data.id;
+        })
+      })
+
       const newUser = new Users();
       newUser.first_name = createUserDto.first_name;
       newUser.last_name = createUserDto.last_name;
@@ -39,7 +45,7 @@ export class UsersService {
       newUser.phone_number=createUserDto.phone_number;
       newUser.password = createUserDto.password;
       newUser.is_active = createUserDto.is_active;
-      newUser.roles = role;
+      newUser.roles = role_id;
 
       const user = this.usersRepository.save(newUser);
       return user;
