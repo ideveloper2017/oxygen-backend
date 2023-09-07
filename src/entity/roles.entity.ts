@@ -14,7 +14,7 @@ export class Roles extends Model {
   @Column()
   is_active: boolean;
 
-  @OneToOne(type => Users, users => users.roles)
+  @ManyToOne(type => Users, users => users.roles)
   users: Users
 
   @ManyToMany((type) => Permissions, (permission) => permission.roles)

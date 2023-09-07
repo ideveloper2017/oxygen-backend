@@ -24,7 +24,7 @@ export class Users extends Model {
   @Column()
   is_active: boolean;
 
-  @OneToOne(type => Roles, roles => roles.users)
+  @OneToMany(type => Roles, roles => roles.users)
   @JoinColumn({name: 'role_id'})
   roles: Roles
 
