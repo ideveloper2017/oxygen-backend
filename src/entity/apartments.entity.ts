@@ -3,6 +3,8 @@ import Model from './model.entity';
 import { Price } from './price.entity';
 import { Sale_details } from './sale_details.entity';
 import { Floor } from './floor.entity';
+import { Orders } from './orders.entity';
+import { OrderItems } from './order-items.entity';
 
 @Entity('Apartments')
 export class Apartments extends Model {
@@ -33,4 +35,10 @@ export class Apartments extends Model {
     (sales_details) => sales_details.apartment_id,
   )
   sales_details: Sale_details[];
+
+  @OneToMany((type) => Orders, orders => orders.apartments)
+  orders: Orders[];
+
+  @OneToMany(() => OrderItems, orderItems => orderItems.apartments)
+  orderItems: OrderItems[];
 }
