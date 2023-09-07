@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne } from "typeorm";
 import Model from './model.entity';
 import { Sales } from './sales.entity';
 import { Orders } from './orders.entity';
@@ -24,7 +24,7 @@ export class Users extends Model {
   @Column()
   is_active: boolean;
 
-  @OneToMany(type => Roles, roles => roles.users)
+  @ManyToOne(type => Roles, roles => roles.users)
   @JoinColumn({name: 'role_id'})
   roles: Roles[]
 
