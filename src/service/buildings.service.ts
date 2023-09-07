@@ -72,9 +72,9 @@ export class BuildingsService {
         'entrances.floors',
         'entrances.floors.apartments',
       ],
-      // order: {
-      //   entrances: { entrance_number: 'asc', floors: { floor_number: 'asc' } },
-      // },
+      order: {
+        entrances: { entrance_number: 'asc', floors: { floor_number: 'asc' } },
+      },
     });
     return result;
   }
