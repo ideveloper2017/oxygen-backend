@@ -48,17 +48,17 @@ export class BuildingsController {
       .findAllBuildings()
       .then((response) => {
         if (response.length != 0) {
-          return JSON.stringify({
+          return {
             success: true,
             data: response,
             message: 'Data fetched successfully',
-          });
+          };
         } else {
-          return JSON.stringify({ success: false, message: 'No data found!' });
+          return { success: false, message: 'No data found!' };
         }
       })
       .catch((error) => {
-        return JSON.stringify({ success: false, message: error.message });
+        return { success: false, message: error.message };
       });
   }
 
