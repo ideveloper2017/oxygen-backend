@@ -3,11 +3,11 @@ import {
   Controller,
   Delete,
   Get,
-  Param,
+  Param, ParseIntPipe,
   Patch,
   Post,
-  Res,
-} from '@nestjs/common';
+  Res
+} from "@nestjs/common";
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { CreateBuildingDto } from 'src/dtos/building-dto/create-building.dto';
@@ -33,7 +33,7 @@ export class BuildingsController {
   
   @ApiOperation({ summary: "id=0 -barcha binolar || id=4 bitta bino" })
   @Get('/all/:id')
-  getAllBuildings(@Param('id') id: number) {
+  getAllBuildings(@Param('id',ParseIntPipe) id: number) {
     return this.buildingsService.findAllBuildings(id).then(data => {
       if(data!== null && data.length != 0){
         return {success: true,  data, message: 'Data fetched successfully'}
