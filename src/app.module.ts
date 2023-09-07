@@ -90,7 +90,6 @@ import { CoreModule } from './core/core.module';
     OrdersModule,
     EntrancesModule,
     FloorsModule,
-    CoreModule,
   ],
   controllers: [
     UsersController,
