@@ -62,9 +62,12 @@ export class BuildingsService {
     async findAllBuildings(id: number) {
       let result
       if(id == 0) {
-         result = await this.buildingRepository.find({relations: ['entrances.floors.apartments' ]});
+         result = await this.buildingRepository
+           .find({relations: ['entrances.floors.apartments'],
+           order:{entrances:{entrance_number:'asc',floors:{floor_number:'asc'}}}});
       }else {
-         result = await this.buildingRepository.findOne({where: {id:id}, relations: ['entrances.floors.apartments' ]});
+         result = await this.buildingRepository.findOne({where: {id:id}, relations: ['entrances.floors.apartments'],
+           order:{entrances:{entrance_number:'asc',floors:{floor_number:'asc'}}}});
       }
     return result
   }
