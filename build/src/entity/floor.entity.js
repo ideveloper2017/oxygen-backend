@@ -24,8 +24,10 @@ __decorate([
     __metadata("design:type", Number)
 ], Floor.prototype, "floor_number", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(type => entrance_entity_1.Entrance, (entrance) => entrance.floors, { onDelete: 'CASCADE' }),
-    (0, typeorm_1.JoinColumn)({ name: "entrance_id" }),
+    (0, typeorm_1.ManyToOne)((type) => entrance_entity_1.Entrance, (entrance) => entrance.floors, {
+        onDelete: 'CASCADE',
+    }),
+    (0, typeorm_1.JoinColumn)({ name: 'entrance_id' }),
     __metadata("design:type", entrance_entity_1.Entrance)
 ], Floor.prototype, "entrance", void 0);
 __decorate([

@@ -16,10 +16,10 @@ exports.BuildingsService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
 const buildings_entity_1 = require("../entity/buildings.entity");
-const typeorm_2 = require("@nestjs/typeorm");
 const apartments_entity_1 = require("../entity/apartments.entity");
 const floor_entity_1 = require("../entity/floor.entity");
 const entrance_entity_1 = require("../entity/entrance.entity");
+const typeorm_2 = require("@nestjs/typeorm");
 let BuildingsService = class BuildingsService {
     constructor(buildingRepository) {
         this.buildingRepository = buildingRepository;
@@ -40,7 +40,9 @@ let BuildingsService = class BuildingsService {
             const entrance = new entrance_entity_1.Entrance();
             entrance.buildings = building;
             entrance.entrance_number = blok;
-            await this.buildingRepository.manager.getRepository(entrance_entity_1.Entrance).save(entrance);
+            await this.buildingRepository.manager
+                .getRepository(entrance_entity_1.Entrance)
+                .save(entrance);
             for (let layer = 1; layer <= building.floor_number; layer++) {
                 const floor = new floor_entity_1.Floor();
                 floor.floor_number = layer;
@@ -57,12 +59,22 @@ let BuildingsService = class BuildingsService {
                 }
             }
         }
-        const result = await this.buildingRepository.manager.getRepository(apartments_entity_1.Apartments)
+        const result = await this.buildingRepository.manager
+            .getRepository(apartments_entity_1.Apartments)
             .save(records);
         return result;
     }
     async findAllBuildings() {
-        const result = await this.buildingRepository.find({ relations: ['entrances', 'entrances.floors', 'entrances.floors.apartments'] });
+        const result = await this.buildingRepository.find({
+            relations: [
+                'entrances',
+                'entrances.floors',
+                'entrances.floors.apartments',
+            ],
+            order: {
+                entrances: { entrance_number: 'asc', floors: { floor_number: 'asc' } },
+            },
+        });
         return result;
     }
     async getBuilding(id) {
@@ -79,7 +91,10 @@ let BuildingsService = class BuildingsService {
         return result;
     }
     async getBuldingsOfTown(town_id) {
-        const result = await this.buildingRepository.createQueryBuilder('buildings').select().where('town_id = :town_id', { town_id })
+        const result = await this.buildingRepository
+            .createQueryBuilder('buildings')
+            .select()
+            .where('town_id = :town_id', { town_id })
             .getMany();
         return result;
     }

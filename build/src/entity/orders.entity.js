@@ -20,21 +20,21 @@ const users_entity_1 = require("./users.entity");
 let Orders = class Orders extends model_entity_1.default {
 };
 __decorate([
-    (0, typeorm_1.ManyToOne)(type => clients_entity_1.Clients, (clients) => clients.orders),
+    (0, typeorm_1.ManyToOne)((type) => clients_entity_1.Clients, (clients) => clients.orders),
     (0, typeorm_1.JoinColumn)({ name: 'client_id' }),
     __metadata("design:type", clients_entity_1.Clients)
 ], Orders.prototype, "clients", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "integer" }),
+    (0, typeorm_1.Column)({ type: 'integer' }),
     __metadata("design:type", Number)
 ], Orders.prototype, "client_id", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(type => users_entity_1.Users, (users) => users.orders),
+    (0, typeorm_1.ManyToOne)((type) => users_entity_1.Users, (users) => users.orders),
     (0, typeorm_1.JoinColumn)({ name: 'user_id' }),
     __metadata("design:type", users_entity_1.Users)
 ], Orders.prototype, "users", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "integer" }),
+    (0, typeorm_1.Column)({ type: 'integer' }),
     __metadata("design:type", Number)
 ], Orders.prototype, "user_id", void 0);
 __decorate([

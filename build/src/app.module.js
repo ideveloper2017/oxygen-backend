@@ -93,6 +93,7 @@ const floors_controller_1 = require("./controller/floors.controller");
 const floors_service_1 = require("./service/floors.service");
 const permissions_service_1 = require("./service/permissions.service");
 const premissions_module_1 = require("./modules/premissions/premissions.module");
+const core_module_1 = require("./core/core.module");
 let AppModule = class AppModule {
     constructor(regionServ, distServ, roleServ, permissionserv) {
         this.regionServ = regionServ;
@@ -136,6 +137,7 @@ AppModule = __decorate([
             orders_module_1.OrdersModule,
             entrances_module_1.EntrancesModule,
             floors_module_1.FloorsModule,
+            core_module_1.CoreModule,
         ],
         controllers: [
             users_controller_1.UsersController,

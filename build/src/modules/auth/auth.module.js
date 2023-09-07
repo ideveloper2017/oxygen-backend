@@ -12,9 +12,9 @@ const users_module_1 = require("../users/users.module");
 const jwt_1 = require("@nestjs/jwt");
 const constants_1 = require("../../constants");
 const auth_service_1 = require("../../service/auth.service");
-const core_1 = require("@nestjs/core");
 const auth_controller_1 = require("../../controller/auth/auth.controller");
-const AuthGuard_1 = require("../../controller/auth/AuthGuard");
+const core_1 = require("@nestjs/core");
+const auth_guard_1 = require("../../common/guards/auth/auth.guard");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
@@ -31,7 +31,7 @@ AuthModule = __decorate([
             auth_service_1.AuthService,
             {
                 provide: core_1.APP_GUARD,
-                useClass: AuthGuard_1.AuthGuard,
+                useClass: auth_guard_1.AuthGuard,
             },
         ],
         controllers: [auth_controller_1.AuthController],

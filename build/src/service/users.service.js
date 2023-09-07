@@ -22,7 +22,9 @@ let UsersService = class UsersService {
         this.usersRepository = usersRepository;
     }
     async getUsers() {
-        const users = await this.usersRepository.find({ relations: ['roles', 'roles.permission'] });
+        const users = await this.usersRepository.find({
+            relations: ['roles', 'roles.permission'],
+        });
         return { status: 200, data: users, message: 'Success' };
     }
     async signIn(username) {
