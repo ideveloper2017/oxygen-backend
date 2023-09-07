@@ -5,7 +5,8 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule } from '@nestjs/swagger';
 import { swaggerConfig } from './options/swagger.option';
-import { ForeignKeyConstraintErrorFilter } from './filters/foreignkey-error.filter';
+import { ForeignKeyConstraintErrorFilter } from "./filters/foreignkey-error.filter";
+
 
 async function bootstrap() {
   const app: NestExpressApplication = await NestFactory.create(AppModule);
