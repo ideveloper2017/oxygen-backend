@@ -58,6 +58,7 @@ import { FloorsController } from './controller/floors.controller';
 import { FloorsService } from './service/floors.service';
 import { PermissionsService } from './service/permissions.service';
 import { PermissionsModule } from './modules/premissions/premissions.module';
+import { CoreModule } from './core/core.module';
 
 @Module({
   imports: [
@@ -89,6 +90,7 @@ import { PermissionsModule } from './modules/premissions/premissions.module';
     OrdersModule,
     EntrancesModule,
     FloorsModule,
+    CoreModule,
   ],
   controllers: [
     UsersController,
