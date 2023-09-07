@@ -16,7 +16,7 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({ /*  whitelist: true , */ transform: true }),
   );
-  //app.useGlobalFilters(new ForeignKeyConstraintErrorFilter())
+  app.useGlobalFilters(new ForeignKeyConstraintErrorFilter())
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api/docs', app, swaggerDocument);
 

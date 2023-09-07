@@ -5,10 +5,10 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
 
 @Module({
   providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: TransformInterceptor,
-    },
+    // {
+    //   provide: APP_INTERCEPTOR,
+    //   useClass: TransformInterceptor,
+    // },
     {
       provide: APP_INTERCEPTOR,
       useClass: LoggingInterceptor,
