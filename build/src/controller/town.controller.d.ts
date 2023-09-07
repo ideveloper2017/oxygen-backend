@@ -6,7 +6,7 @@ export declare class TownController {
     constructor(townService: TownService);
     createTown(createTownDto: CreateTownDto): Promise<{
         status: number;
-        data: any;
+        data: CreateTownDto & import("../entity/town.entity").Towns;
         message: string;
     } | {
         status: number;

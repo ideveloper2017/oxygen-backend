@@ -23,5 +23,5 @@ export declare class OrdersController {
         success: boolean;
         message: string;
     }>;
-    acceptOrRejectOrder(id: number): Promise<any>;
+    acceptOrRejectOrder(id: number): Promise<import("typeorm").UpdateResult>;
 }

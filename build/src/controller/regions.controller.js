@@ -11,12 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegionsController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const express_1 = require("express");
 const regions_service_1 = require("../service/regions.service");
 const districts_service_1 = require("../service/districts.service");
 const region_dto_1 = require("../dtos/region.dto");
@@ -100,7 +98,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden.' }),
     __param(0, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_a = typeof express_1.Response !== "undefined" && express_1.Response) === "function" ? _a : Object]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], RegionsController.prototype, "regionList", null);
 __decorate([
@@ -108,7 +106,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden.' }),
     __param(0, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof express_1.Response !== "undefined" && express_1.Response) === "function" ? _b : Object]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], RegionsController.prototype, "distrList", null);
 __decorate([
@@ -116,7 +114,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [region_dto_1.RegionDto, typeof (_c = typeof express_1.Response !== "undefined" && express_1.Response) === "function" ? _c : Object]),
+    __metadata("design:paramtypes", [region_dto_1.RegionDto, Object]),
     __metadata("design:returntype", void 0)
 ], RegionsController.prototype, "addregion", null);
 __decorate([

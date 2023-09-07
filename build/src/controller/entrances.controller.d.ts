@@ -4,13 +4,13 @@ export declare class EntrancesController {
     constructor(entranceService: EntrancesService);
     addEntrance(building_id: number): Promise<void | {
         success: boolean;
-        data: any;
+        data: import("../entity/entrance.entity").Entrance;
         message: string;
     } | {
         success: boolean;
         message: string;
         data?: undefined;
     }>;
-    getEntranceOfBuilding(building_id: number): Promise<any>;
+    getEntranceOfBuilding(building_id: number): Promise<import("../entity/entrance.entity").Entrance[]>;
     deleteEmptyEntrances(id: number): Promise<any>;
 }

@@ -16,7 +16,7 @@ export declare class ClientsController {
     }>;
     getAllClients(): Promise<{
         status: number;
-        data: any;
+        data: Clients[];
         message: string;
     }>;
     updateClient(id: number, updateClientDto: UpdateClientDto): Promise<{
@@ -26,7 +26,7 @@ export declare class ClientsController {
     }>;
     getClientById(id: number): Promise<{
         status: number;
-        data: any;
+        data: Clients[];
         message: string;
     }>;
 }

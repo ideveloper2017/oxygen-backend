@@ -5,8 +5,8 @@ export declare class AuthController {
     constructor(authService: AuthService);
     signIn(signDto: Record<string, any>): Promise<{
         payload: {
-            username: any;
-            sub: any;
+            username: import("../../entity/users.entity").Users;
+            sub: number;
         };
     }>;
     register(user: CreateUserDto): Promise<any>;

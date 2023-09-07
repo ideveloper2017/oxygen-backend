@@ -5,12 +5,12 @@ export declare class CurrenciesController {
     constructor(currancyService: CurrenciesService);
     addCurrency(createCurrencyDto: CreateCurrencyDto): Promise<{
         status: number;
-        data: any;
+        data: import("../entity/currencies.entity").Currencies;
         message: string;
     }>;
     viewCurrancies(): Promise<{
         status: number;
-        data: any;
+        data: import("../entity/currencies.entity").Currencies[];
         message: string;
     }>;
     selectCurrency(currency: number[]): Promise<{

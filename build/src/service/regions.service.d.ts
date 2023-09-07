@@ -4,7 +4,7 @@ import { RegionDto } from '../dtos/region.dto';
 export declare class RegionsService {
     private readonly regionRepository;
     constructor(regionRepository: Repository<Regions>);
-    getAllRegion(): any;
-    insertRegion(regionDto: RegionDto): any;
+    getAllRegion(): Promise<Regions[]>;
+    insertRegion(regionDto: RegionDto): Promise<RegionDto & Regions>;
     fillDataRegion(): Promise<any>;
 }

@@ -5,7 +5,7 @@ import { ApartmentsService } from 'src/service/apartments.service';
 export declare class ApartmentsController {
     private readonly apartmentsService;
     constructor(apartmentsService: ApartmentsService);
-    createApartment(floor_id: number, createApartmentDto: CreateApartmentDto): Promise<any>;
+    createApartment(floor_id: number, createApartmentDto: CreateApartmentDto): Promise<import("../entity/apartments.entity").Apartments>;
     updateApartment(id: number, updateApartmentDto: UpdateApartmentDto): Promise<void | {
         success: boolean;
         message: string;
@@ -16,7 +16,7 @@ export declare class ApartmentsController {
     }>;
     getApartments(floor_id: number, res: Response): Promise<void | {
         success: boolean;
-        data: any;
+        data: import("../entity/apartments.entity").Apartments[];
         message: string;
     } | {
         success: boolean;

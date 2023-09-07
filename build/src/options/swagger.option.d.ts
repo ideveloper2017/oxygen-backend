@@ -1,1 +1,1 @@
-export declare const swaggerConfig: any;
+export declare const swaggerConfig: Omit<import("@nestjs/swagger").OpenAPIObject, "paths">;

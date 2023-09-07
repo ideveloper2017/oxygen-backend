@@ -18,7 +18,6 @@ var __asyncValues = (this && this.__asyncValues) || function (o) {
     function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
     function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TownService = void 0;
 const common_1 = require("@nestjs/common");
@@ -102,7 +101,8 @@ let TownService = class TownService {
 TownService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(town_entity_1.Towns)),
-    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object, regions_service_1.RegionsService,
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        regions_service_1.RegionsService,
         districts_service_1.DistrictsService,
         roles_service_1.RolesService,
         permissions_service_1.PermissionsService])

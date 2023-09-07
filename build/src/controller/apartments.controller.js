@@ -11,12 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApartmentsController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const express_1 = require("express");
 const create_apartment_dto_1 = require("../dtos/apartment-dto/create-apartment.dto");
 const update_apartment_dto_1 = require("../dtos/apartment-dto/update-apartment.dto");
 const apartments_service_1 = require("../service/apartments.service");
@@ -94,7 +92,7 @@ __decorate([
     (0, common_1.Get)('/get/:floor_id'),
     __param(0, (0, common_1.Param)('floor_id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, typeof (_a = typeof express_1.Response !== "undefined" && express_1.Response) === "function" ? _a : Object]),
+    __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", void 0)
 ], ApartmentsController.prototype, "getApartments", null);
 ApartmentsController = __decorate([

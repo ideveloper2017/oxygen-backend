@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApartmentsService = void 0;
 const common_1 = require("@nestjs/common");
@@ -47,7 +46,7 @@ let ApartmentsService = class ApartmentsService {
 ApartmentsService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(apartments_entity_1.Apartments)),
-    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], ApartmentsService);
 exports.ApartmentsService = ApartmentsService;
 //# sourceMappingURL=apartments.service.js.map

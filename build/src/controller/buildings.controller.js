@@ -11,12 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BuildingsController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const express_1 = require("express");
 const create_building_dto_1 = require("../dtos/building-dto/create-building.dto");
 const update_building_dto_1 = require("../dtos/building-dto/update-building.dto");
 const buildings_service_1 = require("../service/buildings.service");
@@ -35,9 +33,9 @@ let BuildingsController = class BuildingsController {
         });
     }
     getAllBuildings(id) {
-        return this.buildingsService.findAllBuildings(id).then(response => {
-            if (response !== null && response.length != 0) {
-                return { success: true, data: response, message: 'Data fetched successfully' };
+        return this.buildingsService.findAllBuildings(id).then(data => {
+            if (data !== null && data.length != 0) {
+                return { success: true, data, message: 'Data fetched successfully' };
             }
             else {
                 return { success: false, message: "No data found!" };
@@ -51,7 +49,7 @@ let BuildingsController = class BuildingsController {
             if (data.length > 0) {
                 return res.status(200).send({
                     success: true,
-                    data: data,
+                    data,
                     message: 'found record!!!',
                 });
             }
@@ -109,7 +107,7 @@ __decorate([
     __param(0, (0, common_1.Param)('town_id')),
     __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, typeof (_a = typeof express_1.Response !== "undefined" && express_1.Response) === "function" ? _a : Object]),
+    __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", void 0)
 ], BuildingsController.prototype, "getTestBuildings", null);
 __decorate([

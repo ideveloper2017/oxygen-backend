@@ -7,7 +7,7 @@ export declare class BuildingsController {
     constructor(buildingsService: BuildingsService);
     addBuilding(createBuildingDto: CreateBuildingDto): Promise<{
         success: boolean;
-        data: any;
+        data: any[];
         message: string;
     }>;
     getAllBuildings(id: number): Promise<{
@@ -22,7 +22,7 @@ export declare class BuildingsController {
         success: boolean;
         message: any;
     }>;
-    getTestBuildings(town_id: number, res: Response): Promise<any>;
+    getTestBuildings(town_id: number, res: Response): Promise<void | Response<any, Record<string, any>>>;
     editBuilding(id: number, updateBuildingDto: UpdateBuildingDto): Promise<void | {
         success: boolean;
         message: string;

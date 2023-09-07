@@ -11,12 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrdersController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const express_1 = require("express");
 const create_order_dto_1 = require("../dtos/order-dto/create-order.dto");
 const update_order_dto_1 = require("../dtos/order-dto/update-order.dto");
 const orders_service_1 = require("../service/orders.service");
@@ -71,7 +69,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_order_dto_1.CreateOrderDto, typeof (_a = typeof express_1.Response !== "undefined" && express_1.Response) === "function" ? _a : Object]),
+    __metadata("design:paramtypes", [create_order_dto_1.CreateOrderDto, Object]),
     __metadata("design:returntype", void 0)
 ], OrdersController.prototype, "createOrder", null);
 __decorate([

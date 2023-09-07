@@ -5,12 +5,12 @@ export declare class FloorsController {
     addFloor(entrance_id: number): Promise<void | {
         success: boolean;
         message: string;
-        data: any;
+        data: import("../entity/floor.entity").Floor;
     } | {
         success: boolean;
         message: string;
         data?: undefined;
     }>;
-    getFloorsOfEntrance(entrance_id: number): Promise<any>;
+    getFloorsOfEntrance(entrance_id: number): Promise<import("../entity/floor.entity").Floor[]>;
     deleteEmptyEntrances(id: number): Promise<any>;
 }
