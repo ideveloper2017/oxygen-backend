@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrdersController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
+const express_1 = require("express");
 const create_order_dto_1 = require("../dtos/order-dto/create-order.dto");
 const update_order_dto_1 = require("../dtos/order-dto/update-order.dto");
 const orders_service_1 = require("../service/orders.service");
@@ -29,7 +31,7 @@ let OrdersController = class OrdersController {
     }
     getOrder(id) {
         return this.orderService.getOrderList(id).then(response => {
-            if (response.length != 0) {
+            if (response !== null && response.length != 0) {
                 return { data: response, message: "Fetched data" };
             }
             else {
@@ -37,7 +39,7 @@ let OrdersController = class OrdersController {
             }
         });
     }
-    editOpder(id, editOrderDto) {
+    editOrder(id, editOrderDto) {
         return this.orderService.updateOrder(id, editOrderDto).then(response => {
             if (response.affected != 0) {
                 return { success: true, message: "order updated" };
@@ -69,7 +71,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_order_dto_1.CreateOrderDto, Object]),
+    __metadata("design:paramtypes", [create_order_dto_1.CreateOrderDto, typeof (_a = typeof express_1.Response !== "undefined" && express_1.Response) === "function" ? _a : Object]),
     __metadata("design:returntype", void 0)
 ], OrdersController.prototype, "createOrder", null);
 __decorate([
@@ -88,9 +90,9 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, update_order_dto_1.UpdateOrderDto]),
     __metadata("design:returntype", void 0)
-], OrdersController.prototype, "editOpder", null);
+], OrdersController.prototype, "editOrder", null);
 __decorate([
-    (0, swagger_1.ApiOperation)({ summary: "Order ni o'chirish" }),
+    (0, swagger_1.ApiOperation)({ summary: "Order ni o'chirish IDlar ni array ichida berish kerak" }),
     (0, common_1.Delete)('/delete'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),

@@ -5,5 +5,5 @@ export declare class AuthService {
     constructor(jwtService: JwtService);
     hashedPassword(password: string): Promise<any>;
     comparePassword(newPassword: string, oldPassword: string): Promise<any>;
-    generateToken(id: UUID): Promise<string>;
+    generateToken(id: UUID): Promise<any>;
 }

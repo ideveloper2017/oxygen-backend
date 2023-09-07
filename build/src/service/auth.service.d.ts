@@ -7,8 +7,8 @@ export declare class AuthService {
     constructor(userService: UsersService, jwtService: JwtService);
     signIn(username: string, password: string): Promise<{
         payload: {
-            username: import("../entity/users.entity").Users;
-            sub: number;
+            username: any;
+            sub: any;
         };
     }>;
     register(user: CreateUserDto): Promise<any>;

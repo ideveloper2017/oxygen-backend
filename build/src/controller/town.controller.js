@@ -23,8 +23,7 @@ let TownController = class TownController {
         this.townService = townService;
     }
     createTown(createTownDto) {
-        return this.townService.createTown(createTownDto).then(data => {
-        });
+        return this.townService.createTown(createTownDto);
     }
     getAllTowns(res) {
         return this.townService.findAllTowns().then((data) => {

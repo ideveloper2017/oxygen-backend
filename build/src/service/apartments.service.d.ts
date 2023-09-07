@@ -5,8 +5,8 @@ import { Repository } from 'typeorm';
 export declare class ApartmentsService {
     private readonly apartmentRepository;
     constructor(apartmentRepository: Repository<Apartments>);
-    addOneApartment(floor_id: number, createApartmentDto: CreateApartmentDto): Promise<Apartments>;
-    updateApartment(id: number, updateApartmentDto: UpdateApartmentDto): Promise<import("typeorm").UpdateResult>;
-    deleteApartment(id: number): Promise<import("typeorm").DeleteResult>;
-    getApartments(floor_id: number): Promise<Apartments[]>;
+    addOneApartment(floor_id: number, createApartmentDto: CreateApartmentDto): Promise<any>;
+    updateApartment(id: number, updateApartmentDto: UpdateApartmentDto): Promise<any>;
+    deleteApartment(id: number): Promise<any>;
+    getApartments(floor_id: number): Promise<any>;
 }

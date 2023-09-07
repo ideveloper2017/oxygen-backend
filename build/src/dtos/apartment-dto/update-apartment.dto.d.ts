@@ -1,5 +1,4 @@
-import { CreateApartmentDto } from './create-apartment.dto';
-declare const UpdateApartmentDto_base: import("@nestjs/common").Type<Partial<CreateApartmentDto>>;
+declare const UpdateApartmentDto_base: any;
 export declare class UpdateApartmentDto extends UpdateApartmentDto_base {
 }
 export {};

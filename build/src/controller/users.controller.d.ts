@@ -5,10 +5,10 @@ export declare class UsersController {
     constructor(usersService: UsersService);
     findAll(): Promise<{
         status: number;
-        data: import("../entity/users.entity").Users[];
+        data: any;
         message: string;
     }>;
-    createLogin(createUserDto: CreateUserDto): Promise<import("../entity/users.entity").Users>;
+    createLogin(createUserDto: CreateUserDto): Promise<any>;
     update(createUserDto: CreateUserDto): void;
     edit(createUserDto: CreateUserDto): void;
 }

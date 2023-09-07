@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrdersService = void 0;
 const common_1 = require("@nestjs/common");
@@ -23,8 +24,13 @@ let OrdersService = class OrdersService {
     }
     async createOrder(createOrderDto) {
         const order = new orders_entity_1.Orders();
-        order.user_id = createOrderDto.user_id;
         order.client_id = createOrderDto.client_id;
+        order.user_id = createOrderDto.user_id;
+        order.apartment_id = createOrderDto.apartment_id;
+        order.payment_method_id = createOrderDto.payment_method_id;
+        order.total_price = createOrderDto.total_price;
+        order.order_date = new Date();
+        order.quantity = createOrderDto.quantity;
         order.is_accepted = createOrderDto.is_accepted;
         return await this.ordersRepository.save(order);
     }
@@ -34,7 +40,7 @@ let OrdersService = class OrdersService {
             order = await this.ordersRepository.find();
         }
         else {
-            order = await this.ordersRepository.findOne({ where: { id: id } });
+            order = await this.ordersRepository.findOne({ where: { id: id }, relations: ['apartments', 'apartments.floor.entrance.buildings'] });
         }
         return order;
     }
@@ -56,7 +62,7 @@ let OrdersService = class OrdersService {
 OrdersService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(orders_entity_1.Orders)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object])
 ], OrdersService);
 exports.OrdersService = OrdersService;
 //# sourceMappingURL=orders.service.js.map

@@ -15,15 +15,15 @@ export declare class TownService {
     constructor(townRepository: Repository<Towns>, regionService: RegionsService, districtService: DistrictsService, roleService: RolesService, permissionService: PermissionsService);
     createTown(createTownDto: CreateTownDto): Promise<{
         status: number;
-        data: CreateTownDto & Towns;
+        data: any;
         message: string;
     } | {
         status: number;
         message: string;
         data?: undefined;
     }>;
-    findAllTowns(): Promise<Towns[]>;
-    updateTown(id: number, updateTownDto: UpdateTownDto): Promise<import("typeorm").UpdateResult>;
-    deleteTown(id: number): Promise<import("typeorm").DeleteResult>;
+    findAllTowns(): Promise<any>;
+    updateTown(id: number, updateTownDto: UpdateTownDto): Promise<any>;
+    deleteTown(id: number): Promise<any>;
     clearDatabase(): Promise<boolean>;
 }

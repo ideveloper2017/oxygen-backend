@@ -31,11 +31,11 @@ export class BuildingsController {
     })
   }
   
-  @ApiOperation({ summary: "Mavjud barcha binolar ro'yxatini olish" })
-  @Get('/all')
-  getAllBuildings() {
-    return this.buildingsService.findAllBuildings().then(response => {
-      if(response.length != 0){
+  @ApiOperation({ summary: "id=0 -barcha binolar || id=4 bitta bino" })
+  @Get('/all/:id')
+  getAllBuildings(@Param('id') id: number) {
+    return this.buildingsService.findAllBuildings(id).then(response => {
+      if(response!== null && response.length != 0){
         return {success: true, data: response, message: 'Data fetched successfully'}
       }else {
         return {success: false, message: "No data found!"}

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BuildingsService = void 0;
 const common_1 = require("@nestjs/common");
@@ -33,7 +34,6 @@ let BuildingsService = class BuildingsService {
         building.apartment_number = createBuildingDto.apartment_number;
         building.mk_price = createBuildingDto.mk_price;
         building = await this.buildingRepository.save(building);
-        console.log(building);
         let kv = 1;
         const records = [];
         for (let blok = 1; blok <= building.entrance_number; blok++) {
@@ -61,8 +61,14 @@ let BuildingsService = class BuildingsService {
             .save(records);
         return result;
     }
-    async findAllBuildings() {
-        const result = await this.buildingRepository.find({ relations: ['entrances', 'entrances.floors', 'entrances.floors.apartments'] });
+    async findAllBuildings(id) {
+        let result;
+        if (id == 0) {
+            result = await this.buildingRepository.find({ relations: ['entrances.floors.apartments'] });
+        }
+        else {
+            result = await this.buildingRepository.findOne({ where: { id: id }, relations: ['entrances.floors.apartments'] });
+        }
         return result;
     }
     async getBuilding(id) {
@@ -87,7 +93,7 @@ let BuildingsService = class BuildingsService {
 BuildingsService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_2.InjectRepository)(buildings_entity_1.Buildings)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_1.Repository !== "undefined" && typeorm_1.Repository) === "function" ? _a : Object])
 ], BuildingsService);
 exports.BuildingsService = BuildingsService;
 //# sourceMappingURL=buildings.service.js.map

@@ -1,9 +1,8 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { FindOptionsWhere, Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import {  Repository } from 'typeorm';
 import { CreateBuildingDto } from 'src/dtos/building-dto/create-building.dto';
 import { Buildings } from 'src/entity/buildings.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Towns } from 'src/entity/town.entity';
 import { Apartments } from 'src/entity/apartments.entity';
 import { Floor } from 'src/entity/floor.entity';
 import { Entrance } from 'src/entity/entrance.entity';
@@ -27,7 +26,6 @@ export class BuildingsService {
     building.mk_price = createBuildingDto.mk_price;
 
     building = await this.buildingRepository.save(building);
-    console.log(building);
 
     let kv = 1;
     const records = [];
@@ -61,9 +59,14 @@ export class BuildingsService {
 
       return result;
     }
-    async findAllBuildings() {
-      const result = await this.buildingRepository.find({relations: ['entrances' , 'entrances.floors','entrances.floors.apartments' ]});
-    return result;
+    async findAllBuildings(id: number) {
+      let result
+      if(id == 0) {
+         result = await this.buildingRepository.find({relations: ['entrances.floors.apartments' ]});
+      }else {
+         result = await this.buildingRepository.findOne({where: {id:id}, relations: ['entrances.floors.apartments' ]});
+      }
+    return result
   }
 
   public async getBuilding(id: number) {

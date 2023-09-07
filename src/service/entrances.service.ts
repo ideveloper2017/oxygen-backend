@@ -30,7 +30,7 @@ export class EntrancesService {
   async getEntranceOfBuilding(building_id: number) {
     const entrances = await this.entanceRepo.find({
       where: { building_id: building_id },
-      relations: ['buildings', 'floors'],
+      relations: ['floors'],
     });
 
     return entrances;

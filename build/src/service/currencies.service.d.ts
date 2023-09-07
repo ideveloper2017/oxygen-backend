@@ -6,12 +6,12 @@ export declare class CurrenciesService {
     constructor(currencyRepo: Repository<Currencies>);
     createCurrency(createCurrencyDto: CreateCurrencyDto): Promise<{
         status: number;
-        data: Currencies;
+        data: any;
         message: string;
     }>;
     getCurrencies(): Promise<{
         status: number;
-        data: Currencies[];
+        data: any;
         message: string;
     }>;
     selectCurrency(arrayOfId: number[]): Promise<{

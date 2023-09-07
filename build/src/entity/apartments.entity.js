@@ -18,6 +18,8 @@ const model_entity_1 = __importDefault(require("./model.entity"));
 const price_entity_1 = require("./price.entity");
 const sale_details_entity_1 = require("./sale_details.entity");
 const floor_entity_1 = require("./floor.entity");
+const orders_entity_1 = require("./orders.entity");
+const order_items_entity_1 = require("./order-items.entity");
 let Apartments = class Apartments extends model_entity_1.default {
 };
 __decorate([
@@ -53,6 +55,14 @@ __decorate([
     (0, typeorm_1.OneToMany)((type) => sale_details_entity_1.Sale_details, (sales_details) => sales_details.apartment_id),
     __metadata("design:type", Array)
 ], Apartments.prototype, "sales_details", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)((type) => orders_entity_1.Orders, orders => orders.apartments),
+    __metadata("design:type", Array)
+], Apartments.prototype, "orders", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => order_items_entity_1.OrderItems, orderItems => orderItems.apartments),
+    __metadata("design:type", Array)
+], Apartments.prototype, "orderItems", void 0);
 Apartments = __decorate([
     (0, typeorm_1.Entity)('Apartments')
 ], Apartments);

@@ -15,7 +15,7 @@ export declare class OrdersController {
         message: string;
         data?: undefined;
     }>;
-    editOpder(id: number, editOrderDto: UpdateOrderDto): Promise<{
+    editOrder(id: number, editOrderDto: UpdateOrderDto): Promise<{
         success: boolean;
         message: string;
     }>;
@@ -23,5 +23,5 @@ export declare class OrdersController {
         success: boolean;
         message: string;
     }>;
-    acceptOrRejectOrder(id: number): Promise<import("typeorm").UpdateResult>;
+    acceptOrRejectOrder(id: number): Promise<any>;
 }

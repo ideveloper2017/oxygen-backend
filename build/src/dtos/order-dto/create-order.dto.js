@@ -22,6 +22,26 @@ __decorate([
     __metadata("design:type", Number)
 ], CreateOrderDto.prototype, "user_id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 1, description: 'kvartira tanlanadi' }),
+    __metadata("design:type", Number)
+], CreateOrderDto.prototype, "apartment_id", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 1, description: "to'lov turi tanlanadi" }),
+    __metadata("design:type", Number)
+], CreateOrderDto.prototype, "payment_method_id", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 455000000, description: "kvartira umumiy narxi" }),
+    __metadata("design:type", Number)
+], CreateOrderDto.prototype, "total_price", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: "2023-09-04" }),
+    __metadata("design:type", Date)
+], CreateOrderDto.prototype, "order_date", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 2, description: "nechta kvartira olayotgani" }),
+    __metadata("design:type", Number)
+], CreateOrderDto.prototype, "quantity", void 0);
+__decorate([
     (0, swagger_1.ApiProperty)({ example: false, description: "buyurtma qabul qilingan yoki yoqligi" }),
     __metadata("design:type", Boolean)
 ], CreateOrderDto.prototype, "is_accepted", void 0);

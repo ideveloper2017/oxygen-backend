@@ -4,7 +4,15 @@ import { TownService } from 'src/service/town.service';
 export declare class TownController {
     private readonly townService;
     constructor(townService: TownService);
-    createTown(createTownDto: CreateTownDto): Promise<void>;
+    createTown(createTownDto: CreateTownDto): Promise<{
+        status: number;
+        data: any;
+        message: string;
+    } | {
+        status: number;
+        message: string;
+        data?: undefined;
+    }>;
     getAllTowns(res: any): Promise<any>;
     updateTown(id: number, updateTownDto: UpdateTownDto): Promise<void | {
         success: boolean;

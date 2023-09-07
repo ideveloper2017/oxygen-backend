@@ -16,12 +16,12 @@ export declare class ClientsService {
     }>;
     findAllClients(): Promise<{
         status: number;
-        data: Clients[];
+        data: any;
         message: string;
     }>;
     findOneClient(id: number): Promise<{
         status: number;
-        data: Clients[];
+        data: any;
         message: string;
     }>;
     editClientInfo(id: number, updateClientDto: UpdateClientDto): Promise<{

@@ -17,6 +17,9 @@ const typeorm_1 = require("typeorm");
 const model_entity_1 = __importDefault(require("./model.entity"));
 const clients_entity_1 = require("./clients.entity");
 const users_entity_1 = require("./users.entity");
+const apartments_entity_1 = require("./apartments.entity");
+const payment_methods_entity_1 = require("./payment_methods.entity");
+const order_items_entity_1 = require("./order-items.entity");
 let Orders = class Orders extends model_entity_1.default {
 };
 __decorate([
@@ -29,6 +32,15 @@ __decorate([
     __metadata("design:type", Number)
 ], Orders.prototype, "client_id", void 0);
 __decorate([
+    (0, typeorm_1.ManyToOne)(() => apartments_entity_1.Apartments, apartments => apartments.orders),
+    (0, typeorm_1.JoinColumn)({ name: 'apartment_id' }),
+    __metadata("design:type", apartments_entity_1.Apartments)
+], Orders.prototype, "apartments", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Orders.prototype, "apartment_id", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(type => users_entity_1.Users, (users) => users.orders),
     (0, typeorm_1.JoinColumn)({ name: 'user_id' }),
     __metadata("design:type", users_entity_1.Users)
@@ -39,8 +51,33 @@ __decorate([
 ], Orders.prototype, "user_id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Orders.prototype, "quantity", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Orders.prototype, "total_price", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Boolean)
 ], Orders.prototype, "is_accepted", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Date)
+], Orders.prototype, "order_date", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)((type) => payment_methods_entity_1.PaymentMethods, paymentMethods => paymentMethods.orders),
+    (0, typeorm_1.JoinColumn)({ name: 'payment_method_id' }),
+    __metadata("design:type", payment_methods_entity_1.PaymentMethods)
+], Orders.prototype, "paymentMethods", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Orders.prototype, "payment_method_id", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => order_items_entity_1.OrderItems, orderItems => orderItems.orders),
+    __metadata("design:type", Array)
+], Orders.prototype, "orderItems", void 0);
 Orders = __decorate([
     (0, typeorm_1.Entity)('Orders')
 ], Orders);

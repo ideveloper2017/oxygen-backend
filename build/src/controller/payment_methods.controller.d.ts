@@ -14,5 +14,5 @@ export declare class PaymentMethodsController {
         message: string;
     }>;
     getPaymentMethod(id?: number): Promise<any>;
-    editPaymentMethod(id: number, editPaymentMethod: EditPaymentMethodDto): Promise<import("typeorm").UpdateResult>;
+    editPaymentMethod(id: number, editPaymentMethod: EditPaymentMethodDto): Promise<any>;
 }

@@ -5,9 +5,9 @@ import { Repository } from 'typeorm';
 export declare class OrdersService {
     private readonly ordersRepository;
     constructor(ordersRepository: Repository<Orders>);
-    createOrder(createOrderDto: CreateOrderDto): Promise<Orders>;
-    getOrderList(id?: number): Promise<any>;
-    updateOrder(id: number, updateOrderDto: UpdateOrderDto): Promise<import("typeorm").UpdateResult>;
+    createOrder(createOrderDto: CreateOrderDto): Promise<any>;
+    getOrderList(id: number): Promise<any>;
+    updateOrder(id: number, updateOrderDto: UpdateOrderDto): Promise<any>;
     deleteOrder(arrayOfId: number[]): Promise<number>;
-    chooseOrder(id: number): Promise<import("typeorm").UpdateResult>;
+    chooseOrder(id: number): Promise<any>;
 }

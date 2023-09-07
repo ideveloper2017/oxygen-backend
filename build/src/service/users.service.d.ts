@@ -6,9 +6,9 @@ export declare class UsersService {
     constructor(usersRepository: Repository<Users>);
     getUsers(): Promise<{
         status: number;
-        data: Users[];
+        data: any;
         message: string;
     }>;
-    signIn(username: string): Promise<Users>;
-    createLogin(createUserDto: CreateUserDto): Promise<Users>;
+    signIn(username: string): Promise<any>;
+    createLogin(createUserDto: CreateUserDto): Promise<any>;
 }

@@ -21,7 +21,7 @@ export class OrdersController {
     @Get('/order-list/:id')
     getOrder(@Param('id') id?: number, ){
         return this.orderService.getOrderList(id).then(response =>  {
-            if(response.length != 0){
+            if(response !== null && response.length != 0){
                 return {data: response , message: "Fetched data"}
             }else {
                 return {success: true , message: "Not found!"}
@@ -31,7 +31,7 @@ export class OrdersController {
 
     @ApiOperation({summary: "Order ni tahrirlash"})
     @Patch('/edit/:id')
-    editOpder( @Param('id') id: number, @Body() editOrderDto : UpdateOrderDto) {
+    editOrder( @Param('id') id: number, @Body() editOrderDto : UpdateOrderDto) {
         return this.orderService.updateOrder(id, editOrderDto).then(response => {
             if(response.affected != 0 ) {
                 return {success: true , message:"order updated"}
@@ -41,7 +41,7 @@ export class OrdersController {
         })
     }
 
-    @ApiOperation({summary: "Order ni o'chirish"})
+    @ApiOperation({summary: "Order ni o'chirish IDlar ni array ichida berish kerak"})
     @Delete('/delete')
     deleteOrder(@Body() arrayOfId:number[]) {
         return this.orderService.deleteOrder(arrayOfId).then(response => {

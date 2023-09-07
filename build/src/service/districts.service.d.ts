@@ -3,7 +3,7 @@ import { District } from '../entity/district.entity';
 export declare class DistrictsService {
     private districtRepo;
     constructor(districtRepo: Repository<District>);
-    getAllDistricts(): Promise<District[]>;
-    getSelectDistrict(id: number): Promise<District[]>;
+    getAllDistricts(): any;
+    getSelectDistrict(id: number): Promise<any>;
     fillDataDistrict: () => Promise<void>;
 }

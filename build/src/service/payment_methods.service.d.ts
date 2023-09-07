@@ -11,7 +11,7 @@ export declare class PaymentMethodsService {
         message: string;
     }>;
     getPaymentMethod(id?: number): Promise<any>;
-    updatePaymentMethod(id: number, editPaymentMethodDto: EditPaymentMethodDto): Promise<import("typeorm").UpdateResult>;
+    updatePaymentMethod(id: number, editPaymentMethodDto: EditPaymentMethodDto): Promise<any>;
     deletePaymentMethod(arrayOfId: number[]): Promise<{
         status: number;
         message: string;
