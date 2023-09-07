@@ -35,7 +35,7 @@ export class BuildingsController {
   @Get('/all/:id')
   getAllBuildings(@Param('id',ParseIntPipe) id: number) {
     return this.buildingsService.findAllBuildings(id).then((data) => {
-      if(!data){
+      if(data!== null && data.length != 0){
         return {success: true,  data, message: 'Data fetched successfully'}
       }else {
         return {success: false, message: "No data found!"}
