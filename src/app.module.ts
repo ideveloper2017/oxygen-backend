@@ -93,6 +93,7 @@ import { InstallmentPaymentsModule } from './modules/installment-payments/instal
     OrdersModule,
     EntrancesModule,
     FloorsModule,
+    InstallmentPaymentsModule,
   ],
   controllers: [
     UsersController,
