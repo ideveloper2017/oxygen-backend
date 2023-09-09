@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne } from "typeorm";
 import Model from './model.entity';
 import { Permissions } from './permissions.entity';
 import { Users } from './users.entity';
@@ -14,7 +14,7 @@ export class Roles extends Model {
   @Column()
   is_active: boolean;
 
-  @OneToOne(type => Users, users => users.roles)
+  @OneToMany(type => Users, users => users.roles)
   users: Users
 
   @ManyToMany((type) => Permissions, (permission) => permission.roles)

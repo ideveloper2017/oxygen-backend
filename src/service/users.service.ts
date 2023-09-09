@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Users } from 'src/entity/users.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from '../dtos/user-dto/create-user.dto';
+import { Roles } from "../entity/roles.entity";
 
 @Injectable()
 export class UsersService {
@@ -29,14 +30,22 @@ export class UsersService {
   }
 
   public async createLogin(createUserDto: CreateUserDto) {
+    let role_id;
     try {
+      const role= await this.usersRepository.manager.getRepository(Roles).find({where:{id:createUserDto.role_id}}).then((data)=>{
+        data.map(data=>{
+          role_id=data.id;
+        })
+      })
+
       const newUser = new Users();
       newUser.first_name = createUserDto.first_name;
       newUser.last_name = createUserDto.last_name;
       newUser.username = createUserDto.username;
+      newUser.phone_number=createUserDto.phone_number;
       newUser.password = createUserDto.password;
       newUser.is_active = createUserDto.is_active;
-      newUser.role_id = createUserDto.role_id;
+      newUser.roles = role_id;
 
       const user = this.usersRepository.save(newUser);
       return user;
