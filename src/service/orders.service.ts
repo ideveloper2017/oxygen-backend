@@ -30,7 +30,7 @@ export class OrdersService {
         const savedOrder = await this.ordersRepository.save(order)
 
         if(payment_method.name === 'rassrochka'){
-            for(let i = 1; i< createOrderDto.installment_month; i++){
+            for(let i = 1; i <= createOrderDto.installment_month; i++){
                 const installment = new InstallmentPayments()
                 installment.order_id = savedOrder.id
                 installment.total_amount
