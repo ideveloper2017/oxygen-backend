@@ -53,15 +53,15 @@ export class ApartmentsController {
   @Delete('/delete/:id')
   deleteApartment(@Param('id') id: number) {
     return this.apartmentsService.deleteApartment(id).then(data => {
-      if(data.affected != 0) {
+      if(data! == null && data.affected != 0) {
         return {success: true, message: "Apartment deleted"}
       }else {
-        return {success: false, message: "error while deleting"}
+        return {success: false, message: "error while deleting apartment"}
       }
     }).catch(error => console.log(error))
   }
 
-  @ApiOperation({summary: "Bitta binodagi barcha kvartiralar"})
+  @ApiOperation({summary: "Bitta qavatdagi barcha kvartiralar"})
   @Get('/get/:floor_id')
   public getApartments(
     @Param('floor_id', ParseIntPipe) floor_id: number,res: Response) {
@@ -72,6 +72,20 @@ export class ApartmentsController {
           }else {
             return {success: false, message: "Not found record"}
           }
-  }).catch(error => console.log(error))
+        }).catch(error => console.log(error))
+      }
+
+      
+     @ApiOperation({summary: "Kvartira bronlash"})
+     @Patch('/bron/:apartment_id')
+     bookingApartment(@Param('apartment_id') apartment_id: number){
+      return this.apartmentsService.bookingApartment(apartment_id).then((data) => {
+        if(data.affected != 0){
+          return {success: true, message: 'kvartira band qilindi'}
+        }else {
+          return {success: false , message: 'kvartira topilmadi'}
+        }
+      })
      }
-}
+
+    }

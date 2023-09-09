@@ -2,9 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateOrderDto } from 'src/dtos/order-dto/create-order.dto';
 import { UpdateOrderDto } from 'src/dtos/order-dto/update-order.dto';
-import { Clients } from 'src/entity/clients.entity';
+import { Apartments } from 'src/entity/apartments.entity';
+import { InstallmentPayments } from 'src/entity/installment-payments.entity';
 import { Orders } from 'src/entity/orders.entity';
-import { Users } from 'src/entity/users.entity';
+import { PaymentMethods } from 'src/entity/payment_methods.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -13,19 +14,32 @@ export class OrdersService {
 
     async createOrder(createOrderDto: CreateOrderDto) {
         
+        // const apartment = await this.ordersRepository.manager.getRepository(Apartments).findOne({where: {id: createOrderDto.apartment_id}, relations: ['floor.entrance.buildings']})
+
+        const payment_method = await this.ordersRepository.manager.getRepository(PaymentMethods).findOne({where: {id: createOrderDto.payment_method_id}})
+        
+
         const order = new Orders()
         order.client_id = createOrderDto.client_id
         order.user_id = createOrderDto.user_id
-        order.apartment_id = createOrderDto.apartment_id
         order.payment_method_id = createOrderDto.payment_method_id
-        order.total_price= createOrderDto.total_price
-        order.order_date = new Date()        
-        order.quantity = createOrderDto.quantity
+        order.order_date = new Date()  
+        order.total_amount  = null     
+        order.quantity = createOrderDto.apartments.length > 1 ? null : 1
         order.is_accepted = createOrderDto.is_accepted
+        const savedOrder = await this.ordersRepository.save(order)
 
-
-        return  await this.ordersRepository.save(order)
-
+        if(payment_method.name === 'rassrochka'){
+            for(let i = 1; i< createOrderDto.installment_month; i++){
+                const installment = new InstallmentPayments()
+                installment.order_id = savedOrder.id
+                installment.total_amount
+                installment.installment_amount
+                installment.status
+                installment.start_date
+                installment.end_date
+            }
+        }
 
     }
 

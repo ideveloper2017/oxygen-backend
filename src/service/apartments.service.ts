@@ -32,13 +32,21 @@ export class ApartmentsService {
   return editedApartment  
   }
 
+
   async deleteApartment(id: number) {
     const deletedApartment = await this.apartmentRepository.delete(id);
     return deletedApartment
   }
   
+
   async getApartments(floor_id : number) {
     const apartments = await this.apartmentRepository.find({where: {floor_id: floor_id}})
     return  apartments
   }
+
+  async bookingApartment(id: number) {
+    const booking = await this.apartmentRepository.update({id: id}, {status: 'bron'})
+    return booking
+  }
+
 }
