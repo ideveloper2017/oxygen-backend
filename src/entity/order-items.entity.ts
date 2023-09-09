@@ -1,9 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import Model from "./model.entity";
 import { Orders } from "./orders.entity";
-import { Towns } from "./town.entity";
-import { Entrance } from "./entrance.entity";
-import { Floor } from "./floor.entity";
 import { Apartments } from "./apartments.entity";
 
 @Entity('OrderItems')
@@ -13,19 +10,18 @@ export class OrderItems extends Model {
     @JoinColumn({name: "order_id"})
     orders: Orders
 
+    @Column()
+    order_id: number
     
     @ManyToOne(() => Apartments, apartment => apartment.orderItems)
     @JoinColumn({name: "apartment_id"})
     apartments: Apartments
-    
-    @Column()
-    room_space: string
-    
-    @Column()
-    final_price: number
 
     @Column()
-    quantity: number
+    apartment_id: number
+
+    @Column()
+    final_price: number
 
 
 }

@@ -8,7 +8,7 @@ import { BuildingsController } from './controller/buildings.controller';
 import { RolesController } from './controller/roles.controller';
 import { PriceController } from './controller/price.controller';
 import { SalesController } from './controller/sales.controller';
-import { PaymentDetailsController } from './controller/payment_details.controller';
+import { PaymentsController } from './controller/payments.controller';
 import { PaymentMethodsController } from './controller/payment_methods.controller';
 import { SaleDetailsController } from './controller/sale_details.controller';
 import { UserRolesController } from './controller/user_roles.controller';
@@ -17,7 +17,7 @@ import { ClientsService } from './service/clients.service';
 import { BuildingsService } from './service/buildings.service';
 import { ApartmentsService } from './service/apartments.service';
 import { PriceService } from './service/price.service';
-import { PaymentDetailsService } from './service/payment_details.service';
+import { PaymentsService } from './service/payments.service';
 import { PaymentMethodsService } from './service/payment_methods.service';
 import { SaleDetailsService } from './service/sale_details.service';
 import { RolesService } from './service/roles.service';
@@ -28,7 +28,7 @@ import { UsersModule } from './modules/users/users.module';
 import { BuildingsModule } from './modules/buildings/buildings.module';
 import { ApartmentsModule } from './modules/apartments/apartments.module';
 import { ClientsModule } from './modules/clients/clients.module';
-import { PaymentDetailsModule } from './modules/payment_details/payment_details.module';
+import { PaymentsModule } from './modules/payments/payments.module';
 import { SaleDetailsModule } from './modules/sale_details/sale_details.module';
 import { SalesModule } from './modules/sales/sales.module';
 import { RolesModule } from './modules/roles/roles.module';
@@ -59,6 +59,9 @@ import { FloorsService } from './service/floors.service';
 import { PermissionsService } from './service/permissions.service';
 import { PermissionsModule } from './modules/premissions/premissions.module';
 import { CoreModule } from './core/core.module';
+import { InstallmentPaymentsController } from './controller/installment-payments.controller';
+import { InstallmentPaymentsService } from './service/installment-payments.service';
+import { InstallmentPaymentsModule } from './modules/installment-payments/installment-payments.module';
 
 @Module({
   imports: [
@@ -78,7 +81,7 @@ import { CoreModule } from './core/core.module';
     BuildingsModule,
     ApartmentsModule,
     ClientsModule,
-    PaymentDetailsModule,
+    PaymentsModule,
     SaleDetailsModule,
     SalesModule,
     RolesModule,
@@ -91,6 +94,7 @@ import { CoreModule } from './core/core.module';
     EntrancesModule,
     FloorsModule,
     CoreModule,
+    InstallmentPaymentsModule,
   ],
   controllers: [
     UsersController,
@@ -100,7 +104,7 @@ import { CoreModule } from './core/core.module';
     RolesController,
     PriceController,
     SalesController,
-    PaymentDetailsController,
+    PaymentsController,
     PaymentMethodsController,
     SaleDetailsController,
     UserRolesController,
@@ -111,6 +115,7 @@ import { CoreModule } from './core/core.module';
     OrdersController,
     EntrancesController,
     FloorsController,
+    InstallmentPaymentsController,
   ],
   providers: [
     UsersService,
@@ -118,7 +123,7 @@ import { CoreModule } from './core/core.module';
     BuildingsService,
     ApartmentsService,
     PriceService,
-    PaymentDetailsService,
+    PaymentsService,
     PaymentMethodsService,
     SaleDetailsService,
     RolesService,
@@ -134,6 +139,7 @@ import { CoreModule } from './core/core.module';
     OrdersService,
     EntrancesService,
     FloorsService,
+    InstallmentPaymentsService,
   ],
 })
 export class AppModule {

@@ -3,7 +3,7 @@ import Model from './model.entity';
 import { ApiTags } from '@nestjs/swagger';
 import { Orders } from './orders.entity';
 
-@ApiTags('Payment_Methods')
+@ApiTags('PaymentMethods')
 @Entity('PaymentMethods')
 export class PaymentMethods extends Model {
     @Column({unique: true})
@@ -14,4 +14,6 @@ export class PaymentMethods extends Model {
 
     @OneToMany((type) => Orders, orders => orders.paymentMethods)
     orders: Orders[]
+
+
 }

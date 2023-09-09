@@ -3,7 +3,6 @@ import Model from './model.entity';
 import { Price } from './price.entity';
 import { Sale_details } from './sale_details.entity';
 import { Floor } from './floor.entity';
-import { Orders } from './orders.entity';
 import { OrderItems } from './order-items.entity';
 
 @Entity('Apartments')
@@ -21,7 +20,7 @@ export class Apartments extends Model {
   @Column({ nullable: true })
   cells: number;
 
-  @Column({ nullable: true })
+  @Column({ type: 'float', nullable: true })
   room_space: number;
 
   @Column({ enum: ['free', 'sold', 'bron', 'inactive'], nullable: true })
@@ -30,15 +29,13 @@ export class Apartments extends Model {
   @OneToMany((type) => Price, (price) => price.apartment_id)
   price: Price[];
 
-  @OneToMany(
-    (type) => Sale_details,
-    (sales_details) => sales_details.apartment_id,
-  )
-  sales_details: Sale_details[];
-
-  @OneToMany((type) => Orders, orders => orders.apartments)
-  orders: Orders[];
-
+  
   @OneToMany(() => OrderItems, orderItems => orderItems.apartments)
   orderItems: OrderItems[];
 }
+
+// @OneToMany(
+//   (type) => Sale_details,
+//   (sales_details) => sales_details.apartment_id,
+// )
+// sales_details: Sale_details[];

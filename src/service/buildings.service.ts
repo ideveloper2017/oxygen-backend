@@ -49,7 +49,7 @@ export class BuildingsService {
           apartment.room_number = kv++;
           apartment.cells = 1
           apartment.status = 'free'
-          apartment.room_space = 58;
+          apartment.room_space = 58.5;
           records.push(apartment);
         }
       }
@@ -92,7 +92,6 @@ export class BuildingsService {
   async getBuldingsOfTown(town_id: number) {
     const result = await this.buildingRepository.createQueryBuilder('buildings').select().where('town_id = :town_id',{town_id})
     .getMany()
-    
 
     return result
   }

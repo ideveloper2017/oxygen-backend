@@ -2,9 +2,10 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import Model from "./model.entity";
 import { Clients } from "./clients.entity";
 import { Users } from "./users.entity";
-import { Apartments } from "./apartments.entity";
 import { PaymentMethods } from "./payment_methods.entity";
 import { OrderItems } from "./order-items.entity";
+import { Payments } from "./payments.entity";
+import { InstallmentPayments } from "./installment-payments.entity";
 
 @Entity('Orders')
 export class Orders extends Model {
@@ -14,13 +15,7 @@ export class Orders extends Model {
 
     @Column({type: "integer"})
     client_id: number
-    
-    @ManyToOne(() => Apartments, apartments => apartments.orders)
-    @JoinColumn({name: 'apartment_id'})
-    apartments: Apartments
 
-    @Column()
-    apartment_id: number
 
     @ManyToOne(type => Users, (users) => users.orders)
     @JoinColumn({name: 'user_id'})
@@ -33,7 +28,7 @@ export class Orders extends Model {
     quantity: number
 
     @Column()
-    total_price: number
+    total_amount: number
 
     @Column()
     is_accepted: boolean;
@@ -51,5 +46,9 @@ export class Orders extends Model {
     @OneToMany(() => OrderItems, orderItems => orderItems.orders)
     orderItems: OrderItems[]
     
+    @OneToMany(() => Payments, payments => payments.orders)
+    payments: Payments[]
 
+    @OneToMany(() => InstallmentPayments, installmentPayments => installmentPayments.orders)
+    installmentPayments: InstallmentPayments[]
 }

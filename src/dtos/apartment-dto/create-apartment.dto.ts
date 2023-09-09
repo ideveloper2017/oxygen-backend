@@ -9,7 +9,7 @@ export class CreateApartmentDto {
   @ApiProperty({ example: 3 })
   cells: number;
 
-  @ApiProperty({ example: 65.2 })
+  @ApiProperty({ example: 78.5 })
   room_space: number;
 
   @IsString()
