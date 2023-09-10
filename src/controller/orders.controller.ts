@@ -45,7 +45,7 @@ export class OrdersController {
     @Delete('/delete')
     deleteOrder(@Body() arrayOfId:number[]) {
         return this.orderService.deleteOrder(arrayOfId).then(response => {
-            if(response > 1) {
+            if(response != 0 ) {
                 return {success: true, message: `${response} Orders deleted successfully`}
             }else {
                 return {success: true, message: "order deleted successfully"}
