@@ -32,6 +32,7 @@ export class UsersController {
 
   @Delete('/delete')
   deleteUsers(@Body() userid:string[]) {
+
     return userid;
     // return this.usersService.deleteUsers(userid).then((data)=>{
     //   return data.affected != 0?{success:true,message:'Deleted is record!!!'} :{success:false,message:'not deleted!!!'}
