@@ -23,23 +23,9 @@ export class OrderItems extends Model {
     @Column()
     final_price: number
     
-    // @Column()
+    
 
 
 
 
 }
-// @ManyToOne(() => Towns, towns => towns.orderItems)
-// @JoinColumn({name: "town_id"})
-// towns: Towns
-
-// @ManyToOne(() => Entrance, entrance => entrance.orderItems)
-// @JoinColumn({name: "entrance_id"})
-// entrances: Entrance
-
-// @Column()
-// entrance_id: number
-
-// @ManyToOne(() => Floor, floor => floor.orderItems)
-// @JoinColumn({name: "floor_id"})
-// floors: Floor

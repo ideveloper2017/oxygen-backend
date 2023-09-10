@@ -69,7 +69,6 @@ export class UsersService {
     let userIds:userinterface[];
     let user;
     for(let i=0;i<userid.length;i++){
-        // userIds.({ id : userid[i] });
       user=this.usersRepository.delete({id:userid[i]})
     }
     return user;

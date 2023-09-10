@@ -35,6 +35,9 @@ export class Orders extends Model {
 
     @Column()
     order_date: Date
+    
+    @Column({enum: ["active", "inactive"]})
+    order_status:  string
 
     @ManyToOne((type) => PaymentMethods, paymentMethods => paymentMethods.orders)
     @JoinColumn({name: 'payment_method_id'})
