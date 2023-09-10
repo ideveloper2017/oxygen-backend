@@ -5,7 +5,7 @@ import { Users } from "./users.entity";
 import { PaymentMethods } from "./payment_methods.entity";
 import { OrderItems } from "./order-items.entity";
 import { Payments } from "./payments.entity";
-import { InstallmentPayments } from "./installment-payments.entity";
+import { CreditTable } from "./kredit-plan.entity";
 
 @Entity('Orders')
 export class Orders extends Model {
@@ -49,6 +49,6 @@ export class Orders extends Model {
     @OneToMany(() => Payments, payments => payments.orders)
     payments: Payments[]
 
-    @OneToMany(() => InstallmentPayments, installmentPayments => installmentPayments.orders)
-    installmentPayments: InstallmentPayments[]
+    @OneToMany(() => CreditTable, CreditTable => CreditTable.orders)
+    CreditTables: CreditTable[]
 }

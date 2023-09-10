@@ -1,7 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import Model from './model.entity';
 import { Price } from './price.entity';
-import { Sale_details } from './sale_details.entity';
 import { Floor } from './floor.entity';
 import { OrderItems } from './order-items.entity';
 

@@ -22,6 +22,10 @@ export class OrderItems extends Model {
 
     @Column()
     final_price: number
+    
+    // @Column()
+
+
 
 
 }

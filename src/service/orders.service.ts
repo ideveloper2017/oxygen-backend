@@ -2,11 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateOrderDto } from 'src/dtos/order-dto/create-order.dto';
 import { UpdateOrderDto } from 'src/dtos/order-dto/update-order.dto';
-import { Apartments } from 'src/entity/apartments.entity';
-import { InstallmentPayments } from 'src/entity/installment-payments.entity';
+import { CreditTable } from 'src/entity/kredit-plan.entity';
+import { OrderItems } from 'src/entity/order-items.entity';
 import { Orders } from 'src/entity/orders.entity';
 import { PaymentMethods } from 'src/entity/payment_methods.entity';
 import { Repository } from 'typeorm';
+
 
 @Injectable()
 export class OrdersService {
@@ -24,22 +25,28 @@ export class OrdersService {
         order.user_id = createOrderDto.user_id
         order.payment_method_id = createOrderDto.payment_method_id
         order.order_date = new Date()  
-        order.total_amount  = null     
-        order.quantity = createOrderDto.apartments.length > 1 ? null : 1
+        order.total_amount  = 145200000     
+        order.quantity = createOrderDto.apartments.length
         order.is_accepted = createOrderDto.is_accepted
         const savedOrder = await this.ordersRepository.save(order)
 
+        const orderItem = new OrderItems()
+        orderItem.order_id = savedOrder.id
+        orderItem.apartment_id = createOrderDto.apartment_id
+
+
+      
         if(payment_method.name === 'rassrochka'){
             for(let i = 1; i <= createOrderDto.installment_month; i++){
-                const installment = new InstallmentPayments()
+                const installment = new CreditTable()
                 installment.order_id = savedOrder.id
                 installment.total_amount
-                installment.installment_amount
+                installment.kredit_amount
                 installment.status
-                installment.start_date
-                installment.end_date
+                installment.due_date
             }
         }
+        return savedOrder
 
     }
 
@@ -50,7 +57,6 @@ export class OrdersService {
         }else {
             order = await this.ordersRepository.findOne({where: {id: id}, relations: ['apartments', 'apartments.floor.entrance.buildings']});
         }
-
         return order
     }
 

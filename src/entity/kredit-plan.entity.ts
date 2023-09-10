@@ -5,9 +5,9 @@ import { Orders } from "./orders.entity";
 
 
 
-@Entity('InstallmentPayments')
-export class InstallmentPayments extends Model {
-    @ManyToOne(() => Orders, orders => orders.installmentPayments)
+@Entity('CreditTable')
+export class CreditTable extends Model {
+    @ManyToOne(() => Orders, orders => orders.CreditTables)
     @JoinColumn({name: 'order_id'})
     orders: Orders
 
@@ -15,20 +15,15 @@ export class InstallmentPayments extends Model {
     order_id: number
     
     @Column()
-    installment_amount: number
+    kredit_amount: number
     
     @Column()
     total_amount: number
     
-    @Column({enum: ['paid', 'waiting','unpaid']})
+    @Column({enum: ['paid','unpaid']})
     status: string
     
     @Column()
-    start_date: Date
-    
-    @Column()
-    end_date: Date
-
-
+    due_date: Date
 
 }
