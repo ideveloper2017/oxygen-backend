@@ -35,11 +35,11 @@ export class OrdersService {
         orderItem.apartment_id = createOrderDto.apartment_id
 
       
-        if(payment_method.name === 'rassrochka'){
+        if(payment_method.name.toLowerCase() === 'rassrochka'){
             for(let i = 1; i <= createOrderDto.installment_month; i++){
                 const installment = new CreditTable()
                 installment.order_id = savedOrder.id
-                installment.credit_amount
+                installment.due_amount
                 installment.status
                 installment.due_date
             }

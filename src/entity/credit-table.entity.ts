@@ -15,7 +15,7 @@ export class CreditTable extends Model {
     order_id: number
     
     @Column()
-    credit_amount: number
+    due_amount: number
     
     @Column({enum: ['paid','waiting','unpaid']})
     status: string

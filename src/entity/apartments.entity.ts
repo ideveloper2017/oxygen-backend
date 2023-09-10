@@ -32,9 +32,3 @@ export class Apartments extends Model {
   @OneToMany(() => OrderItems, orderItems => orderItems.apartments)
   orderItems: OrderItems[];
 }
-
-// @OneToMany(
-//   (type) => Sale_details,
-//   (sales_details) => sales_details.apartment_id,
-// )
-// sales_details: Sale_details[];
