@@ -66,9 +66,23 @@ export class TownController {
         return { success: false, message: 'Turar-joy topilmadi! ' };
       }
       return { success: true, message: "Turar-joy o'chirildi!" };
-    
+      
     })
   }
+
+  @ApiOperation({ summary: "Turar-joylardagi bino va kvartiralar sonini korish" })
+  @Get('/get-count')
+  getCountOfBuildingsAndApartmentsInTown(){
+      return this.townService.getCountOfBuildingsAndApartmentsInTown().then(data => {
+        if(data.length != 0 ){
+          return { success: true, message: "Turar-joy ma'lumotlari",data }
+      }else {
+        return { success: false, message:"Turar-joy ma'lumotlari yoq"}
+  }
+})
+  }
+  
+
 
   @ApiOperation({ summary: `EHTIYOT BO'LAMIZ ⛔⛔⛔ BU REQUEST BAZANI TOZALAB YUBORADI `})
   @Delete('/clear-database')

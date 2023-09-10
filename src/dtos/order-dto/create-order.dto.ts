@@ -9,6 +9,9 @@ export class CreateOrderDto {
 
     @ApiProperty({example: 1,  description: "buyurtma rasmiylashtirgan xodim idisi" })
     user_id: number
+    
+    @ApiProperty({example: 1,  description: "sotib olinayotgan kvartira idsi" })
+    apartment_id: number
 
     @ApiProperty({example: 1, description: "to'lov turi tanlanadi"})
     payment_method_id: number
