@@ -19,7 +19,7 @@ export class UsersController {
     return this.usersService.createLogin(createUserDto);
   }
 
-  @Put('/update')
+  @Put('/update/:id')
   update(@Param('id',ParseIntPipe) id:number,@Body() updateUserDto: UpdateUserDto) {
     return this.usersService.updateUser(id,updateUserDto).then((data)=>{
           if (data.affected==1){
