@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="frp" uploadOnCheckin="da8d765c-a0d8-43f5-936b-18cba8eef01c" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="frp">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myUploadOnCheckinName" value="frp" />
+  </component>
+</project>

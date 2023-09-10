@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put, Query} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { UsersService } from 'src/service/users.service';
 import { CreateUserDto } from '../dtos/user-dto/create-user.dto';
@@ -19,7 +19,7 @@ export class UsersController {
     return this.usersService.createLogin(createUserDto);
   }
 
-  @Put('/update')
+  @Put('/update/:id')
   update(@Param('id',ParseIntPipe) id:number,@Body() updateUserDto: UpdateUserDto) {
     return this.usersService.updateUser(id,updateUserDto).then((data)=>{
           if (data.affected==1){
@@ -30,10 +30,14 @@ export class UsersController {
     })
   }
 
-  @Delete('/delete')
+  @Post('/delete')
   deleteUsers(@Body() userid:number[]) {
-    return this.usersService.deleteUsers(userid).then((data)=>{
-      return data.affected != 0?{success:true,message:'Deleted is record!!!'} :{success:false,message:'not deleted!!!'}
-    });
+
+    console.log(userid);
+    // return this.usersService.deleteUsers(userid).then((data)=>{
+    //   return data.affected != 0?{success:true,message:'Deleted is record!!!'} :{success:false,message:'not deleted!!!'}
+    // }).catch((error)=>{
+    //   return {success:false,message:error.message}
+    // });
   }
 }
