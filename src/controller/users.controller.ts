@@ -33,7 +33,7 @@ export class UsersController {
   @Delete('/delete')
   deleteUsers(@Body() userid:number[]) {
     return this.usersService.deleteUsers(userid).then((data)=>{
-      return {success:true,message:'Deleted is record!!!'}
+      return data.affected != 0?{success:true,message:'Deleted is record!!!'} :{success:false,message:'not deleted!!!'}
     }).catch((error)=>{
       return {success:false,message:error.message}
     });
