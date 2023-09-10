@@ -16,7 +16,7 @@ export class PaymentMethodsController {
     }
     
     @ApiOperation({summary: "Pul birligini o'chirish",})
-    @Post('/delete')
+    @Delete('/delete')
     deletePaymentMethod(@Body() id:number[]) {
       return this.paymentMethodsService.deletePaymentMethod(id)
     }
