@@ -5,7 +5,13 @@ import { Users } from 'src/entity/users.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from '../dtos/user-dto/create-user.dto';
 import { Roles } from "../entity/roles.entity";
+import {UpdateUserDto} from "../dtos/user-dto/update-user.dto";
 
+
+interface userinterface{
+  id:string,
+  val:number
+}
 @Injectable()
 export class UsersService {
   constructor(
@@ -52,5 +58,20 @@ export class UsersService {
     } catch (error) {
       throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+  }
+
+
+  public async updateUser(id:number,updateUserDto:UpdateUserDto){
+    return await this.usersRepository.update({id:id},updateUserDto);
+  }
+
+  public async deleteUsers(userid:number[]){
+    let userIds:userinterface[];
+    let user;
+    for(let i=0;i<userid.length;i++){
+        // userIds.({ id : userid[i] });
+      user=this.usersRepository.delete({id:userid[i]})
+    }
+    return user;
   }
 }
