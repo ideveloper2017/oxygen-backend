@@ -31,7 +31,7 @@ export class UsersController {
   }
 
   @Delete('/delete')
-  deleteUsers(@Body() userid:string[]) {
+  deleteUsers(@Body() userid:number[]) {
 
     return userid;
     // return this.usersService.deleteUsers(userid).then((data)=>{
