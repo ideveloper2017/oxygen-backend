@@ -7,7 +7,7 @@ import { Orders } from "./orders.entity";
 
 @Entity('CreditTable')
 export class CreditTable extends Model {
-    @ManyToOne(() => Orders, orders => orders.CreditTables)
+    @ManyToOne(() => Orders, orders => orders.creditTables)
     @JoinColumn({name: 'order_id'})
     orders: Orders
 
@@ -15,12 +15,9 @@ export class CreditTable extends Model {
     order_id: number
     
     @Column()
-    kredit_amount: number
+    credit_amount: number
     
-    @Column()
-    total_amount: number
-    
-    @Column({enum: ['paid','unpaid']})
+    @Column({enum: ['paid','waiting','unpaid']})
     status: string
     
     @Column()

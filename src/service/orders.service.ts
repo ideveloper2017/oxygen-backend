@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateOrderDto } from 'src/dtos/order-dto/create-order.dto';
 import { UpdateOrderDto } from 'src/dtos/order-dto/update-order.dto';
-import { CreditTable } from 'src/entity/kredit-plan.entity';
+import { CreditTable } from 'src/entity/credit-table.entity';
 import { OrderItems } from 'src/entity/order-items.entity';
 import { Orders } from 'src/entity/orders.entity';
 import { PaymentMethods } from 'src/entity/payment_methods.entity';
@@ -34,14 +34,12 @@ export class OrdersService {
         orderItem.order_id = savedOrder.id
         orderItem.apartment_id = createOrderDto.apartment_id
 
-
       
         if(payment_method.name === 'rassrochka'){
             for(let i = 1; i <= createOrderDto.installment_month; i++){
                 const installment = new CreditTable()
                 installment.order_id = savedOrder.id
-                installment.total_amount
-                installment.kredit_amount
+                installment.credit_amount
                 installment.status
                 installment.due_date
             }
