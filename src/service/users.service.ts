@@ -67,7 +67,7 @@ export class UsersService {
         return await this.usersRepository.update({id: id}, updateUserDto);
     }
 
-    public async deleteUsers(userid: number[]) {
+    public async deleteUsers(userid: string[]) {
         return this.usersRepository.delete({id: In(userid)})
     }
 }
