@@ -30,8 +30,8 @@ export class UsersController {
     })
   }
 
-  @Delete('/delete')
-  deleteUsers(@Body() userid:any) {
+  @Post('/delete')
+  deleteUsers(@Body() userid:number[]) {
 
     console.log(userid);
     // return this.usersService.deleteUsers(userid).then((data)=>{
