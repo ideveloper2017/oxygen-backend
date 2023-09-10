@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="frp" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="frp" uploadOnCheckin="da8d765c-a0d8-43f5-936b-18cba8eef01c" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="frp">
         <serverdata>
@@ -10,5 +10,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="frp" />
   </component>
 </project>
