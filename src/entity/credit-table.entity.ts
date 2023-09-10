@@ -7,7 +7,7 @@ import { Orders } from "./orders.entity";
 
 @Entity('CreditTable')
 export class CreditTable extends Model {
-    @ManyToOne(() => Orders, orders => orders.CreditTables)
+    @ManyToOne(() => Orders, orders => orders.creditTables)
     @JoinColumn({name: 'order_id'})
     orders: Orders
 
