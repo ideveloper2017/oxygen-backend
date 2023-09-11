@@ -9,9 +9,16 @@ import {UpdateUserDto} from "../dtos/user-dto/update-user.dto";
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get('/list')
-  findAll() {
-    return this.usersService.getUsers();
+  @Get('/list/:id')
+  findAll(@Param('id') id: number) {
+    return this.usersService.getUsers(id).then(data => {
+      if(data || data.length > 0) {
+        return {success: true, data, message: "Fetched data"}
+      }else {
+        return {success: false, message: "data not found "}
+        
+    }
+  })
   }
 
   @Post('/save')
