@@ -15,15 +15,21 @@ export class OrdersService {
 
     async createOrder(createOrderDto: CreateOrderDto) {
         
+        const lastOrderId = await this.ordersRepository .createQueryBuilder('order')
+        .select('MAX(order.id)', 'lastId')
+        .getRawOne();
+
+        console.log(lastOrderId);
         // const apartment = await this.ordersRepository.manager.getRepository(Apartments).findOne({where: {id: createOrderDto.apartment_id}, relations: ['floor.entrance.buildings']})
 
         const payment_method = await this.ordersRepository.manager.getRepository(PaymentMethods).findOne({where: {id: createOrderDto.payment_method_id}})
         
 
         const order = new Orders()
+        order.id = lastOrderId.lastId ? lastOrderId.lastId+1 : 1
         order.client_id = createOrderDto.client_id
         order.user_id = createOrderDto.user_id
-        order.payment_method_id = createOrderDto.payment_method_id
+        order.payment_method_id = createOrderDto.payment_method_id 
         order.order_date = new Date()  
         order.total_amount  = 145200000     
         order.quantity = createOrderDto.apartments.length

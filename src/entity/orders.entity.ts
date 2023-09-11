@@ -1,5 +1,4 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-import Model from "./model.entity";
 import { Clients } from "./clients.entity";
 import { Users } from "./users.entity";
 import { PaymentMethods } from "./payment_methods.entity";
@@ -8,7 +7,10 @@ import { Payments } from "./payments.entity";
 import { CreditTable } from "./credit-table.entity";
 
 @Entity('Orders')
-export class Orders extends Model {
+export class Orders  {
+    @Column({unique:true, primary: true})
+    id: number
+
     @ManyToOne(type => Clients, (clients) => clients.orders)
     @JoinColumn({name: 'client_id'})
     clients: Clients;
