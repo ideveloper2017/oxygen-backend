@@ -37,7 +37,11 @@ export class TownService {
   }
 
   async findAllTowns() {
-    const towns = await this.townRepository.find({ relations: ['buildings'] });
+    // const towns = await this.townRepository.find({ relations: ['buildings'] });
+    const towns =  this.townRepository
+                 .createQueryBuilder("towns")
+                .leftJoinAndSelect("towns.buildings","buildings")
+                  .getMany();
     return towns;
   }
 

@@ -66,6 +66,9 @@ import { CreditTableModule } from './modules/kredit-plan/kredit-plan.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
+      isGlobal: true
+    }),
+    ConfigModule.forRoot({
       validationSchema: Joi.object({
         POSTGRES_HOST: Joi.string().required(),
         POSTGRES_PORT: Joi.number().required(),
