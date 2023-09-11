@@ -21,12 +21,17 @@ export class UsersService {
     ) {
     }
 
-    async getUsers() {
-        const users = await this.usersRepository.find({
-            relations: ['roles', 'roles.permission'],
-        });
-        return {status: 200, data: users, message: 'Success'};
+    async getUsers(id: number) {
+        let users
+        if(id != 0 ){
+            users = await this.usersRepository.findOne({where: {id: id},relations: ['roles', 'roles.permission']});
+
+        }else {
+            users = await this.usersRepository.find({relations: ['roles', 'roles.permission'] });
+        }
+        return users
     }
+
 
     public async signIn(username: string) {
         return await this.usersRepository.manager
