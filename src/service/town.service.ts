@@ -8,6 +8,13 @@ import { RegionsService } from './regions.service';
 import { DistrictsService } from './districts.service';
 import { RolesService } from './roles.service';
 import { PermissionsService } from './permissions.service';
+import { Buildings } from 'src/entity/buildings.entity';
+import { Clients } from 'src/entity/clients.entity';
+import { Orders } from 'src/entity/orders.entity';
+import { Payments } from 'src/entity/payments.entity';
+import { Apartments } from 'src/entity/apartments.entity';
+import { Users } from 'src/entity/users.entity';
+import { Roles } from 'src/entity/roles.entity';
 
 @Injectable()
 export class TownService {
@@ -73,6 +80,22 @@ export class TownService {
 
     return res
   
+  }
+  async homePageDatas() {
+
+    const towns = await this.townRepository.count()
+    const buildings = await this.townRepository.manager.getRepository(Buildings).count()
+    const orders = await this.townRepository.manager.getRepository(Orders).count()
+    const clients = await this.townRepository.manager.getRepository(Clients).count()
+    const payments = await this.townRepository.manager.getRepository(Payments).count()
+    const roles = await this.townRepository.manager.getRepository(Roles).count()
+    const users = await this.townRepository.manager.getRepository(Users).count()
+    const apartments = await this.townRepository.manager.getRepository(Apartments).count()
+    const bookedApartments = await this.townRepository.manager.getRepository(Apartments).count({where: {status: 'bron'}})
+
+    return {
+      towns, buildings, apartments, orders, users, roles, clients, payments, bookedApartments
+    }
   }
 
 
