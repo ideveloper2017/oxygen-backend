@@ -14,9 +14,10 @@ async function bootstrap() {
 
   app.setGlobalPrefix('/api');
   app.enableCors();
-  app.useGlobalPipes(
-    new ValidationPipe({ /*  whitelist: true , */ transform: true }),
-  );
+  app.useGlobalPipes(new ValidationPipe());
+  // app.useGlobalPipes(
+  //   new ValidationPipe({ /*  whitelist: true , */ transform: true }),
+  // );
   // app.useGlobalFilters(new ForeignKeyConstraintErrorFilter())
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api/docs', app, swaggerDocument);

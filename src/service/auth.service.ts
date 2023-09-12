@@ -2,6 +2,9 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from '../dtos/user-dto/create-user.dto';
+import {AuthLoginDto} from "../dtos/auth-dto/AuthLoginDto";
+import {Users} from "../entity/users.entity";
+import {CommonErrors} from "../common/errors/common-erros";
 
 @Injectable()
 export class AuthService {
@@ -10,20 +13,48 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async signIn(username: string, password: string) {
-    const user = await this.userService.signIn(username);
-    if (user?.password !== password) {
-      throw new UnauthorizedException();
-    }
+  async signIn(authLoginDto:AuthLoginDto) {
+    const user=await this.validateUser(authLoginDto);
+    const payload = { role: user.roles, userId: user.id };
 
-    const payload = { username: user, sub: user.id };
     return {
-      payload,
-      // access_token: await this.jwtService.signAsync(payload),
+      access_token: this.jwtService.sign(payload,{
+        secret: process.env.JWT_SECRET,
+        expiresIn: "60s",
+      }),
     };
+  }
+
+  async getLoggedUser(user: any) {
+    const loggedUser =  await Users.findOne({
+      where: {
+        id: user,
+      },
+    });
+
+    delete loggedUser.password;
+    return loggedUser;
   }
 
   public async register(user: CreateUserDto): Promise<any> {
     return this.userService.createLogin(user);
+  }
+
+  private async validateUser(authLoginDto:AuthLoginDto){
+    const {usernameoremail,password}=authLoginDto;
+    const user=await this.findByEmail(authLoginDto.usernameoremail);
+    if (!(user?.validatePassword(password))){
+      throw new UnauthorizedException(CommonErrors.Unauthorized)
+    }
+    return user;
+  }
+
+  private async findByEmail(usernameoremail:string){
+    return await Users.findOne({
+      where:{
+        username:usernameoremail
+      },
+      //relations:['roles','roles.permission']
+    })
   }
 }

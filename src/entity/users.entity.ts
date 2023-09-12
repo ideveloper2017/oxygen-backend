@@ -1,8 +1,9 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne } from "typeorm";
+import {BeforeInsert, Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne} from "typeorm";
 import Model from './model.entity';
 import { Sales } from './sales.entity';
 import { Orders } from './orders.entity';
 import { Roles } from './roles.entity';
+import * as bcrypt from 'bcryptjs';
 
 @Entity('Users')
 export class Users extends Model {
@@ -28,12 +29,18 @@ export class Users extends Model {
   @JoinColumn({name: 'role_id'})
   roles: Roles[]
 
-  // @Column()
-  // role_id: number
-
   @OneToMany((type) => Sales, (sales) => sales.users)
   sales: Sales[];
 
   @OneToMany((type) => Orders, (orders) => orders.users)
   orders: Orders[];
+
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 8);
+  }
+
+  async validatePassword(password: string): Promise<boolean> {
+    return bcrypt.compare(password, this.password);
+  }
 }
