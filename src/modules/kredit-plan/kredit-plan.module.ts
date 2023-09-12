@@ -8,6 +8,6 @@ import { CreditTableService } from 'src/service/credit-table.service';
     imports: [TypeOrmModule.forFeature([CreditTable])],
     controllers: [CreditTableController],
     providers: [CreditTableService],
-    exports: [TypeOrmModule]
+    exports: [TypeOrmModule, CreditTableService]
 })
 export class CreditTableModule {}

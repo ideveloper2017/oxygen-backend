@@ -9,101 +9,89 @@ import { Orders } from 'src/entity/orders.entity';
 import { PaymentMethods } from 'src/entity/payment_methods.entity';
 import { Repository } from 'typeorm';
 
+
 @Injectable()
 export class OrdersService {
-  constructor(
-    @InjectRepository(Orders)
-    private readonly ordersRepository: Repository<Orders>,
-  ) {}
+    constructor(@InjectRepository(Orders) private readonly ordersRepository: Repository<Orders>){}
 
-  async getLastID() {
-    const lastid = await this.ordersRepository
-      .createQueryBuilder('orders')
-      .orderBy('id', 'DESC')
-      .getOne();
+    async getLastID() {
+        const lastid = await this.ordersRepository.createQueryBuilder('orders')
+        .orderBy('id', 'DESC')
+        .getOne()
 
-    return lastid;
-  }
-  async createOrder(createOrderDto: CreateOrderDto) {
-    // const apartment = await this.ordersRepository.manager.getRepository(Apartments).findOne({where: {id: createOrderDto.apartment_id}, relations: ['floor.entrance.buildings']})
-
-    const payment_method = await this.ordersRepository.manager
-      .getRepository(PaymentMethods)
-      .findOne({ where: { id: createOrderDto.payment_method_id } });
-
-    const order = new Orders();
-    order.client_id = createOrderDto.client_id;
-    order.user_id = createOrderDto.user_id;
-    order.payment_method_id = createOrderDto.payment_method_id;
-    order.order_status = createOrderDto.order_status;
-    order.order_date = new Date();
-    order.total_amount = 145200000;
-    order.quantity = createOrderDto.apartments.length;
-    order.is_accepted = createOrderDto.is_accepted;
-    const savedOrder = await this.ordersRepository.save(order);
-
-    const orderItem = new OrderItems();
-    orderItem.order_id = savedOrder.id;
-    orderItem.apartment_id = createOrderDto.apartment_id;
-
-    const price = await this.ordersRepository.manager
-      .getRepository(Apartments)
-      .findOne({
-        where: { id: orderItem.apartment_id },
-        relations: ['floor.entrance.buildings'],
-      });
-
-    const total = price.floor.entrance.buildings.mk_price * price.room_space;
-    const oneMonthDue =
-      (total - createOrderDto.initial_pay) / createOrderDto.installment_month;
-    // console.log(price.floor.entrance.buildings.mk_price);
-    console.log(total - createOrderDto.initial_pay);
-    // if(payment_method.name.toLowerCase() === 'rassrochka'){
-    //     for(let i = 1; i <= createOrderDto.installment_month; i++){
-    //         const installment = new CreditTable()
-    //         installment.order_id = savedOrder.id
-    //         installment.due_amount
-    //         installment.status
-    //         installment.due_date
-    //     }
-    // }
-    return savedOrder;
-  }
-
-  async getOrderList(id: number) {
-    let order;
-    if (id == 0) {
-      order = await this.ordersRepository.find();
-    } else {
-      order = await this.ordersRepository.findOne({
-        where: { id: id },
-        relations: ['apartments', 'apartments.floor.entrance.buildings'],
-      });
+        return lastid
     }
-    return order;
-  }
+    async createOrder(createOrderDto: CreateOrderDto) {
+        
+        // const apartment = await this.ordersRepository.manager.getRepository(Apartments).findOne({where: {id: createOrderDto.apartment_id}, relations: ['floor.entrance.buildings']})
 
-  async updateOrder(id: number, updateOrderDto: UpdateOrderDto) {
-    const order = await this.ordersRepository.update(
-      { id: id },
-      updateOrderDto,
-    );
-    return order;
-  }
+        const payment_method = await this.ordersRepository.manager.getRepository(PaymentMethods).findOne({where: {id: createOrderDto.payment_method_id}})
+        
+        const order = new Orders()
+        order.client_id = createOrderDto.client_id
+        order.user_id = createOrderDto.user_id
+        order.payment_method_id = createOrderDto.payment_method_id 
+        order.order_status = createOrderDto.order_status
+        order.order_date = new Date()  
+        order.total_amount  = 145200000     
+        order.quantity = createOrderDto.apartments.length
+        order.is_accepted = createOrderDto.is_accepted
+        const savedOrder = await this.ordersRepository.save(order)
 
-  async deleteOrder(arrayOfId: number[]) {
-    for (const id of arrayOfId) {
-      await this.ordersRepository.delete({ id: id });
+        const orderItem = new OrderItems()
+        orderItem.order_id = savedOrder.id
+        orderItem.apartment_id = createOrderDto.apartment_id
+
+        const price = await this.ordersRepository.manager.getRepository(Apartments).findOne({where: {id: orderItem.apartment_id}, relations: ['floor.entrance.buildings']})
+
+        const total = price.floor.entrance.buildings.mk_price * price.room_space
+        const oneMonthDue = (total - createOrderDto.initial_pay) / createOrderDto.installment_month
+        console.log(oneMonthDue.toFixed(2));
+
+        if(payment_method.name.toLowerCase() === 'rassrochka'){
+            let creditSchedule = []
+            let date = new Date()
+            for(let i = 1; i <= createOrderDto.installment_month; i++){
+                let mon = new Date(date.setMonth(date.getMonth() +1))
+                const installment = new CreditTable()
+                installment.order_id = savedOrder.id
+                installment.due_amount = oneMonthDue
+                installment.due_date = mon
+                installment.status = 'waiting'
+                creditSchedule.push(installment)
+            }
+
+            const schedule = await this.ordersRepository.manager.getRepository(CreditTable).save(creditSchedule)
+            console.log(schedule);
+        }
+        return savedOrder
     }
 
-    return arrayOfId.length;
-  }
+    async getOrderList(id: number) {
+        let order
+        if(id == 0){
+             order = await this.ordersRepository.find()
+        }else {
+            order = await this.ordersRepository.findOne({where: {id: id}, relations: ['apartments', 'apartments.floor.entrance.buildings']});
+        }
+        return order
+    }
 
-  async chooseOrder(id: number) {
-    const order = await this.ordersRepository.update(
-      { id: id },
-      { is_accepted: true },
-    );
-    return order;
-  }
+    async updateOrder( id:number, updateOrderDto: UpdateOrderDto) {
+        const order = await this.ordersRepository.update({id: id}, updateOrderDto)
+        return order
+    }
+   
+    async deleteOrder(arrayOfId: number[]) {
+        for(let id of arrayOfId) {
+            await this.ordersRepository.delete({id: id})
+        }
+
+        return arrayOfId.length
+    }
+
+    async chooseOrder(id: number ) {
+        const order = await this.ordersRepository.update({id: id}, {is_accepted: true})
+        return order
+    }
 }
