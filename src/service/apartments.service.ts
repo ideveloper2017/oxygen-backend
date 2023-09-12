@@ -33,7 +33,18 @@ export class ApartmentsService {
   }
 
   async getOneApartment(id: number) {
-    const apartment  = await this.apartmentRepository.findOne({where: {id: id}});
+   
+    const apartment  = await this.apartmentRepository.findOne({where: {id: id} , relations: ['floor.entrance.buildings.towns']});
+   
+    // const apartment  = await this.apartmentRepository.createQueryBuilder('apartments')
+    // .leftJoinAndSelect('apartments.floor', 'floor') // Join the customer table
+    // .leftJoinAndSelect('floor.entrance', 'entrance') // Join the items table
+    // .leftJoinAndSelect('entrance.buildings', 'buildings') // Join the items table
+    // .leftJoinAndSelect('buildings.towns', 'towns') // Join the items table
+    // .select([  'towns.name','buildings.name','entrance.entrance_number', 'floor.floor_number', 'apartments.room_number','apartments.cells','apartments.room_space', 'buildings.mk_price', 'towns.address']) // Select columns from both order, customer, and item tables
+    // .where('apartments.id = :id', {id})
+    // .getOne();
+
     return apartment
   }
 
