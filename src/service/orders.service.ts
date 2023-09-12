@@ -46,17 +46,24 @@ export class OrdersService {
 
         const total = price.floor.entrance.buildings.mk_price * price.room_space
         const oneMonthDue = (total - createOrderDto.initial_pay) / createOrderDto.installment_month
-        // console.log(price.floor.entrance.buildings.mk_price);
-        console.log(total-createOrderDto.initial_pay);
-        // if(payment_method.name.toLowerCase() === 'rassrochka'){
-        //     for(let i = 1; i <= createOrderDto.installment_month; i++){
-        //         const installment = new CreditTable()
-        //         installment.order_id = savedOrder.id
-        //         installment.due_amount
-        //         installment.status
-        //         installment.due_date
-        //     }
-        // }
+        console.log(oneMonthDue.toFixed(2));
+        
+        if(payment_method.name.toLowerCase() === 'rassrochka'){
+            let creditSchedule = []
+            let date = new Date()
+            for(let i = 1; i <= createOrderDto.installment_month; i++){
+                let mon = new Date(date.setMonth(date.getMonth() +1))
+                const installment = new CreditTable()
+                installment.order_id = savedOrder.id
+                installment.due_amount = oneMonthDue
+                installment.due_date = mon
+                installment.status = 'waiting'
+                creditSchedule.push(installment)
+            }
+            
+            const schedule = await this.ordersRepository.manager.getRepository(CreditTable).save(creditSchedule)
+            console.log(schedule);
+        }   
         return savedOrder
     }
 
