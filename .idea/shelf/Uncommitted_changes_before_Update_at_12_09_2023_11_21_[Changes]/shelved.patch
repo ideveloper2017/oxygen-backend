@@ -1,0 +1,259 @@
+Index: src/modules/auth/auth.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Module } from '@nestjs/common';\r\nimport { UsersModule } from '../users/users.module';\r\nimport { JwtModule } from '@nestjs/jwt';\r\nimport { jwtConstants } from '../../constants';\r\nimport { AuthService } from '../../service/auth.service';\r\nimport { AuthController } from '../../controller/auth/auth.controller';\r\nimport { APP_GUARD } from '@nestjs/core';\r\nimport { AuthGuard } from '../../common/guards/auth/auth.guard';\r\n\r\n@Module({\r\n  imports: [\r\n    UsersModule,\r\n    JwtModule.register({\r\n      global: true,\r\n      secret: jwtConstants.secret,\r\n      signOptions: { expiresIn: '60s' },\r\n    }),\r\n  ],\r\n  providers: [\r\n    AuthService,\r\n    {\r\n      provide: APP_GUARD,\r\n      useClass: AuthGuard,\r\n    },\r\n  ],\r\n  controllers: [AuthController],\r\n  exports: [AuthService],\r\n})\r\nexport class AuthModule {}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/modules/auth/auth.module.ts b/src/modules/auth/auth.module.ts
+--- a/src/modules/auth/auth.module.ts	(revision edb1001896839ddbe4aa3df4c82d67ad2b78205c)
++++ b/src/modules/auth/auth.module.ts	(date 1694498557263)
+@@ -16,14 +16,8 @@
+       signOptions: { expiresIn: '60s' },
+     }),
+   ],
+-  providers: [
+-    AuthService,
+-    {
+-      provide: APP_GUARD,
+-      useClass: AuthGuard,
+-    },
+-  ],
++  providers: [AuthService],
+   controllers: [AuthController],
+-  exports: [AuthService],
++  // exports: [AuthService],
+ })
+ export class AuthModule {}
+Index: src/service/auth.service.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Injectable, UnauthorizedException } from '@nestjs/common';\r\nimport { UsersService } from './users.service';\r\nimport { JwtService } from '@nestjs/jwt';\r\nimport { CreateUserDto } from '../dtos/user-dto/create-user.dto';\r\n\r\n@Injectable()\r\nexport class AuthService {\r\n  constructor(\r\n    private userService: UsersService,\r\n    private jwtService: JwtService,\r\n  ) {}\r\n\r\n  async signIn(username: string, password: string) {\r\n    const user = await this.userService.signIn(username);\r\n    if (user?.password !== password) {\r\n      throw new UnauthorizedException();\r\n    }\r\n\r\n    const payload = { username: user, sub: user.id };\r\n    return {\r\n      payload,\r\n      // access_token: await this.jwtService.signAsync(payload),\r\n    };\r\n  }\r\n\r\n  public async register(user: CreateUserDto): Promise<any> {\r\n    return this.userService.createLogin(user);\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/service/auth.service.ts b/src/service/auth.service.ts
+--- a/src/service/auth.service.ts	(revision edb1001896839ddbe4aa3df4c82d67ad2b78205c)
++++ b/src/service/auth.service.ts	(date 1694498769277)
+@@ -19,7 +19,7 @@
+     const payload = { username: user, sub: user.id };
+     return {
+       payload,
+-      // access_token: await this.jwtService.signAsync(payload),
++      access_token: await this.jwtService.signAsync(payload),
+     };
+   }
+ 
+Index: src/app.module.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Module } from '@nestjs/common';\r\nimport { ConfigModule } from '@nestjs/config';\r\nimport { DatabaseModule } from './database/database.module';\r\nimport { UsersController } from './controller/users.controller';\r\nimport { ClientsController } from './controller/clients.controller';\r\nimport { ApartmentsController } from './controller/apartments.controller';\r\nimport { BuildingsController } from './controller/buildings.controller';\r\nimport { RolesController } from './controller/roles.controller';\r\nimport { PriceController } from './controller/price.controller';\r\nimport { SalesController } from './controller/sales.controller';\r\nimport { PaymentsController } from './controller/payments.controller';\r\nimport { PaymentMethodsController } from './controller/payment_methods.controller';\r\nimport { SaleDetailsController } from './controller/sale_details.controller';\r\nimport { UserRolesController } from './controller/user_roles.controller';\r\nimport { UsersService } from './service/users.service';\r\nimport { ClientsService } from './service/clients.service';\r\nimport { BuildingsService } from './service/buildings.service';\r\nimport { ApartmentsService } from './service/apartments.service';\r\nimport { PriceService } from './service/price.service';\r\nimport { PaymentsService } from './service/payments.service';\r\nimport { PaymentMethodsService } from './service/payment_methods.service';\r\nimport { SaleDetailsService } from './service/sale_details.service';\r\nimport { RolesService } from './service/roles.service';\r\nimport { UserRolesService } from './service/user-roles.service';\r\nimport { SalesService } from './service/sales.service';\r\nimport { AuthModule } from './options/jwt-service/auth.module';\r\nimport { UsersModule } from './modules/users/users.module';\r\nimport { BuildingsModule } from './modules/buildings/buildings.module';\r\nimport { ApartmentsModule } from './modules/apartments/apartments.module';\r\nimport { ClientsModule } from './modules/clients/clients.module';\r\nimport { PaymentsModule } from './modules/payments/payments.module';\r\nimport { SaleDetailsModule } from './modules/sale_details/sale_details.module';\r\nimport { SalesModule } from './modules/sales/sales.module';\r\nimport { RolesModule } from './modules/roles/roles.module';\r\nimport { PaymentMethodsModule } from './modules/payment_methods/payment_methods.module';\r\nimport { TownController } from './controller/town.controller';\r\nimport { TownService } from './service/town.service';\r\nimport { TownModule } from './modules/town/town.module';\r\nimport * as Joi from '@hapi/joi';\r\nimport { RegionsModule } from './modules/regions/regions.module';\r\nimport { RegionsController } from './controller/regions.controller';\r\nimport { RegionsService } from './service/regions.service';\r\nimport { DistrictsService } from './service/districts.service';\r\nimport { CurrenciesController } from './controller/currencies.controller';\r\nimport { CurrenciesModule } from './modules/currencies/currencies.module';\r\nimport { CurrenciesService } from './service/currencies.service';\r\nimport { AuthController } from './controller/auth/auth.controller';\r\nimport { AuthService } from './service/auth.service';\r\nimport { JwtService } from '@nestjs/jwt';\r\nimport { OrdersModule } from './modules/orders/orders.module';\r\nimport { OrdersService } from './service/orders.service';\r\nimport { OrdersController } from './controller/orders.controller';\r\nimport { EntrancesController } from './controller/entrances.controller';\r\nimport { EntrancesModule } from './modules/entrances/entrances.module';\r\nimport { EntrancesService } from './service/entrances.service';\r\nimport { FloorsModule } from './modules/floors/floors.module';\r\nimport { FloorsController } from './controller/floors.controller';\r\nimport { FloorsService } from './service/floors.service';\r\nimport { PermissionsService } from './service/permissions.service';\r\nimport { PermissionsModule } from './modules/premissions/premissions.module';\r\nimport { CoreModule } from './core/core.module';\r\nimport { InstallmentPaymentsController } from './controller/installment-payments.controller';\r\nimport { InstallmentPaymentsService } from './service/installment-payments.service';\r\nimport { InstallmentPaymentsModule } from './modules/installment-payments/installment-payments.module';\r\n\r\n@Module({\r\n  imports: [\r\n    ConfigModule.forRoot({\r\n      validationSchema: Joi.object({\r\n        POSTGRES_HOST: Joi.string().required(),\r\n        POSTGRES_PORT: Joi.number().required(),\r\n        POSTGRES_USER: Joi.string().required(),\r\n        POSTGRES_PASSWORD: Joi.string().required(),\r\n        POSTGRES_DATABASE: Joi.string().required(),\r\n        PORT: Joi.number(),\r\n      }),\r\n    }),\r\n    DatabaseModule,\r\n    AuthModule,\r\n    UsersModule,\r\n    BuildingsModule,\r\n    ApartmentsModule,\r\n    ClientsModule,\r\n    PaymentsModule,\r\n    SaleDetailsModule,\r\n    SalesModule,\r\n    RolesModule,\r\n    PaymentMethodsModule,\r\n    TownModule,\r\n    CurrenciesModule,\r\n    RegionsModule,\r\n    PermissionsModule,\r\n    OrdersModule,\r\n    EntrancesModule,\r\n    FloorsModule,\r\n    InstallmentPaymentsModule,\r\n  ],\r\n  controllers: [\r\n    UsersController,\r\n    ClientsController,\r\n    ApartmentsController,\r\n    BuildingsController,\r\n    RolesController,\r\n    PriceController,\r\n    SalesController,\r\n    PaymentsController,\r\n    PaymentMethodsController,\r\n    SaleDetailsController,\r\n    UserRolesController,\r\n    TownController,\r\n    CurrenciesController,\r\n    RegionsController,\r\n    AuthController,\r\n    OrdersController,\r\n    EntrancesController,\r\n    FloorsController,\r\n    InstallmentPaymentsController,\r\n  ],\r\n  providers: [\r\n    UsersService,\r\n    ClientsService,\r\n    BuildingsService,\r\n    ApartmentsService,\r\n    PriceService,\r\n    PaymentsService,\r\n    PaymentMethodsService,\r\n    SaleDetailsService,\r\n    RolesService,\r\n    UserRolesService,\r\n    SalesService,\r\n    TownService,\r\n    CurrenciesService,\r\n    RegionsService,\r\n    DistrictsService,\r\n    AuthService,\r\n    JwtService,\r\n    PermissionsService,\r\n    OrdersService,\r\n    EntrancesService,\r\n    FloorsService,\r\n    InstallmentPaymentsService,\r\n  ],\r\n})\r\nexport class AppModule {\r\n  constructor(\r\n    private regionServ: RegionsService,\r\n    private distServ: DistrictsService,\r\n    private roleServ: RolesService,\r\n    private permissionserv: PermissionsService,\r\n  ) {\r\n    regionServ.fillDataRegion();\r\n    distServ.fillDataDistrict();\r\n    roleServ.filldata();\r\n    permissionserv.filldata();\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app.module.ts b/src/app.module.ts
+--- a/src/app.module.ts	(revision edb1001896839ddbe4aa3df4c82d67ad2b78205c)
++++ b/src/app.module.ts	(date 1694498715839)
+@@ -23,7 +23,6 @@
+ import { RolesService } from './service/roles.service';
+ import { UserRolesService } from './service/user-roles.service';
+ import { SalesService } from './service/sales.service';
+-import { AuthModule } from './options/jwt-service/auth.module';
+ import { UsersModule } from './modules/users/users.module';
+ import { BuildingsModule } from './modules/buildings/buildings.module';
+ import { ApartmentsModule } from './modules/apartments/apartments.module';
+@@ -62,6 +61,7 @@
+ import { InstallmentPaymentsController } from './controller/installment-payments.controller';
+ import { InstallmentPaymentsService } from './service/installment-payments.service';
+ import { InstallmentPaymentsModule } from './modules/installment-payments/installment-payments.module';
++import { AuthModule } from "./modules/auth/auth.module";
+ 
+ @Module({
+   imports: [
+@@ -96,49 +96,49 @@
+     InstallmentPaymentsModule,
+   ],
+   controllers: [
+-    UsersController,
+-    ClientsController,
+-    ApartmentsController,
+-    BuildingsController,
+-    RolesController,
+-    PriceController,
+-    SalesController,
+-    PaymentsController,
+-    PaymentMethodsController,
+-    SaleDetailsController,
+-    UserRolesController,
+-    TownController,
+-    CurrenciesController,
+-    RegionsController,
+-    AuthController,
+-    OrdersController,
+-    EntrancesController,
+-    FloorsController,
+-    InstallmentPaymentsController,
++    // UsersController,
++    // ClientsController,
++    // ApartmentsController,
++    // BuildingsController,
++    // RolesController,
++    // PriceController,
++    // SalesController,
++    // PaymentsController,
++    // PaymentMethodsController,
++    // SaleDetailsController,
++    // UserRolesController,
++    // TownController,
++    // CurrenciesController,
++    // RegionsController,
++    // AuthController,
++    // OrdersController,
++    // EntrancesController,
++    // FloorsController,
++    // InstallmentPaymentsController,
+   ],
+   providers: [
+-    UsersService,
+-    ClientsService,
+-    BuildingsService,
+-    ApartmentsService,
+-    PriceService,
+-    PaymentsService,
+-    PaymentMethodsService,
+-    SaleDetailsService,
+-    RolesService,
+-    UserRolesService,
+-    SalesService,
+-    TownService,
+-    CurrenciesService,
+-    RegionsService,
+-    DistrictsService,
+-    AuthService,
+-    JwtService,
+-    PermissionsService,
+-    OrdersService,
+-    EntrancesService,
+-    FloorsService,
+-    InstallmentPaymentsService,
++    // UsersService,
++    // ClientsService,
++    // BuildingsService,
++    // ApartmentsService,
++    // PriceService,
++    // PaymentsService,
++    // PaymentMethodsService,
++    // SaleDetailsService,
++    // RolesService,
++    // UserRolesService,
++    // SalesService,
++    // TownService,
++    // CurrenciesService,
++    // RegionsService,
++    // DistrictsService,
++    // AuthService,
++    // JwtService,
++    // PermissionsService,
++    // OrdersService,
++    // EntrancesService,
++    // FloorsService,
++    // InstallmentPaymentsService,
+   ],
+ })
+ export class AppModule {
+Index: src/service/users.service.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { HttpException, HttpStatus, Injectable } from '@nestjs/common';\r\nimport { InjectRepository } from '@nestjs/typeorm';\r\n\r\nimport { Users } from 'src/entity/users.entity';\r\nimport { Repository } from 'typeorm';\r\nimport { CreateUserDto } from '../dtos/user-dto/create-user.dto';\r\nimport { Roles } from \"../entity/roles.entity\";\r\n\r\n@Injectable()\r\nexport class UsersService {\r\n  constructor(\r\n    @InjectRepository(Users)\r\n    private readonly usersRepository: Repository<Users>,\r\n  ) {}\r\n\r\n  async getUsers() {\r\n    const users = await this.usersRepository.find({\r\n      relations: ['roles', 'roles.permission'],\r\n    });\r\n    return { status: 200, data: users, message: 'Success' };\r\n  }\r\n\r\n  public async signIn(username: string) {\r\n    return await this.usersRepository.manager\r\n      .getRepository(Users)\r\n      .findOne({ where: { username: username }, relations: ['roles'] })\r\n      .then((data) => {\r\n        return data;\r\n      });\r\n  }\r\n\r\n  public async createLogin(createUserDto: CreateUserDto) {\r\n    let role_id;\r\n    try {\r\n      const role= await this.usersRepository.manager.getRepository(Roles).find({where:{id:createUserDto.role_id}}).then((data)=>{\r\n        data.map(data=>{\r\n          role_id=data.id;\r\n        })\r\n      })\r\n\r\n      const newUser = new Users();\r\n      newUser.first_name = createUserDto.first_name;\r\n      newUser.last_name = createUserDto.last_name;\r\n      newUser.username = createUserDto.username;\r\n      newUser.phone_number=createUserDto.phone_number;\r\n      newUser.password = createUserDto.password;\r\n      newUser.is_active = createUserDto.is_active;\r\n      newUser.roles = role_id;\r\n\r\n      const user = this.usersRepository.save(newUser);\r\n      return user;\r\n    } catch (error) {\r\n      throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);\r\n    }\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/service/users.service.ts b/src/service/users.service.ts
+--- a/src/service/users.service.ts	(revision edb1001896839ddbe4aa3df4c82d67ad2b78205c)
++++ b/src/service/users.service.ts	(date 1694498769293)
+@@ -4,7 +4,7 @@
+ import { Users } from 'src/entity/users.entity';
+ import { Repository } from 'typeorm';
+ import { CreateUserDto } from '../dtos/user-dto/create-user.dto';
+-import { Roles } from "../entity/roles.entity";
++import { Roles } from '../entity/roles.entity';
+ 
+ @Injectable()
+ export class UsersService {
+@@ -32,17 +32,20 @@
+   public async createLogin(createUserDto: CreateUserDto) {
+     let role_id;
+     try {
+-      const role= await this.usersRepository.manager.getRepository(Roles).find({where:{id:createUserDto.role_id}}).then((data)=>{
+-        data.map(data=>{
+-          role_id=data.id;
+-        })
+-      })
++      const role = await this.usersRepository.manager
++        .getRepository(Roles)
++        .find({ where: { id: createUserDto.role_id } })
++        .then((data) => {
++          data.map((data) => {
++            role_id = data.id;
++          });
++        });
+ 
+       const newUser = new Users();
+       newUser.first_name = createUserDto.first_name;
+       newUser.last_name = createUserDto.last_name;
+       newUser.username = createUserDto.username;
+-      newUser.phone_number=createUserDto.phone_number;
++      newUser.phone_number = createUserDto.phone_number;
+       newUser.password = createUserDto.password;
+       newUser.is_active = createUserDto.is_active;
+       newUser.roles = role_id;
+Index: src/options/jwt-service/auth.module.ts
+===================================================================
+diff --git a/src/options/jwt-service/auth.module.ts b/src/options/jwt-service/auth.module.ts
+deleted file mode 100644
+--- a/src/options/jwt-service/auth.module.ts	(revision edb1001896839ddbe4aa3df4c82d67ad2b78205c)
++++ /dev/null	(revision edb1001896839ddbe4aa3df4c82d67ad2b78205c)
+@@ -1,10 +0,0 @@
+-import { Module } from '@nestjs/common';
+-import { AuthService } from './auth.service';
+-import { JwtModule } from '@nestjs/jwt';
+-
+-@Module({
+-  imports: [JwtModule.register({ secret: process.env.JWT_SECRET_KEY })],
+-  providers: [AuthService],
+-  exports: [AuthService],
+-})
+-export class AuthModule {}
+Index: src/options/jwt-service/auth.service.ts
+===================================================================
+diff --git a/src/options/jwt-service/auth.service.ts b/src/options/jwt-service/auth.service.ts
+deleted file mode 100644
+--- a/src/options/jwt-service/auth.service.ts	(revision edb1001896839ddbe4aa3df4c82d67ad2b78205c)
++++ /dev/null	(revision edb1001896839ddbe4aa3df4c82d67ad2b78205c)
+@@ -1,26 +0,0 @@
+-import { Injectable } from '@nestjs/common';
+-import { JwtService } from '@nestjs/jwt';
+-import * as bcryptjs from 'bcryptjs';
+-import { UUID } from 'typeorm/driver/mongodb/bson.typings';
+-@Injectable()
+-export class AuthService {
+-  constructor(private readonly jwtService: JwtService) {}
+-
+-  // parolni heshlash
+-  async hashedPassword(password: string) {
+-    return bcryptjs.hashSync(password, 7);
+-  }
+-
+-  // Parolni solishtirib koradigan method
+-  async comparePassword(newPassword: string, oldPassword: string) {
+-    return bcryptjs.compareSync(newPassword, oldPassword);
+-  }
+-
+-  // token generatsiya qiladigan method
+-  async generateToken(id: UUID) {
+-    const payload = {
+-      id: id,
+-    };
+-    return this.jwtService.sign(payload);
+-  }
+-}
