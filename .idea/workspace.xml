@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c125ca06-2697-4dcc-a2d5-b4cffa3c5652" name="Changes" comment="Commit">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/oxygen-backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/decorators/auth-user.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/decorators/role.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/errors/common-erros.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/auth/jwt-auth.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/auth/jwt.strategy.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/credit-table.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dtos/auth-dto/AuthLoginDto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dtos/currency-dto/create-exchange-rate.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dtos/currency-dto/edit-exchange-rate.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dtos/user-dto/update-user.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/credit-table.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/exchange-rate.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/kredit-plan/kredit-plan.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/credit-table.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/apartments.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/apartments.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/auth/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/currencies.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/currencies.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/installment-payments.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/orders.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/orders.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/town.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/town.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/users.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/database.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/order-dto/create-order.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/order-dto/create-order.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/user-dto/create-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/user-dto/create-user.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/apartments.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/apartments.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/currencies.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/currencies.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/installment-payments.entity.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/order-items.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/order-items.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/orders.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/orders.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/users.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/users.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/auth.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/currencies/currencies.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currencies/currencies.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/installment-payments/installment-payments.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/options/swagger.option.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/swagger.option.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/apartments.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/apartments.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/currencies.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/currencies.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/installment-payments.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/orders.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/orders.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/payment_methods.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/payment_methods.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/town.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/town.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/users.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="D:\MAMP\bin\php\php8.1.0\php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2V0pPV2txV0IKUsqZiMWTiP7NRy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/nodejsprojects/oxygen-backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\nodejsprojects\\oxygen-backend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\nodejsprojects\oxygen-backend\src\common\decorators" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c125ca06-2697-4dcc-a2d5-b4cffa3c5652" name="Changes" comment="" />
+      <created>1693982827863</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693982827863</updated>
+      <workItem from="1693982829125" duration="257000" />
+      <workItem from="1693983096908" duration="1332000" />
+      <workItem from="1694061645028" duration="4309000" />
+      <workItem from="1694063043503" duration="6573000" />
+      <workItem from="1694061405738" duration="136000" />
+      <workItem from="1694061555395" duration="1435000" />
+      <workItem from="1694240067173" duration="297000" />
+      <workItem from="1694237218392" duration="2336000" />
+      <workItem from="1694497469168" duration="2191000" />
+    </task>
+    <task id="LOCAL-00001" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1693983836615</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1693983836615</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1693984066265</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693984066265</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1693984106206</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693984106206</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1693984222830</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693984222830</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1693984280698</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693984280698</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1693984369496</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693984369496</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1694062753413</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1694062753413</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1694062794727</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1694062794727</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1694061752842</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1694061752842</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1694062374066</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1694062374066</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1694499822508</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1694499822508</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit" />
+  </component>
+</project>
