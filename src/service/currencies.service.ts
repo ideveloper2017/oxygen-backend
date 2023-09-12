@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateCurrencyDto } from 'src/dtos/currency-dto/create-currency.dto';
-import { ExchangeRateDto } from 'src/dtos/currency-dto/exchange-rate.dto';
+import { CreatexchangeRateDto } from 'src/dtos/currency-dto/create-exchange-rate.dto';
+import { EditExchangeRateDto } from 'src/dtos/currency-dto/edit-exchange-rate.dto';
 import { Currencies } from 'src/entity/currencies.entity';
 import { ExchangRates } from 'src/entity/exchange-rate.entity';
 import { Repository } from 'typeorm';
@@ -38,13 +39,20 @@ export class CurrenciesService {
 
   //====================================== EchangeRates Repository logic ===========================
 
-  async newRate(exchangeRateDto:ExchangeRateDto){
+  async newRate(exchangeRateDto:CreatexchangeRateDto){
     const rate = new ExchangRates()
     rate.rate_value = exchangeRateDto.rate_value
     rate.currency_id = exchangeRateDto.currency_id
-    rate.is_default = exchangeRateDto.is_default
-    
+    rate.is_default = true
+
+    await this.exchangeRepo.update({}, {is_default: false})
+
     const savedRate = await this.exchangeRepo.save(rate)
     return savedRate
+  }
+
+  async updateCurrancyRate (id: number, editExcahangeRateDto: EditExchangeRateDto) {
+    const editRate = await this.exchangeRepo.update({ id: id }, editExcahangeRateDto)
+    return editRate
   }
 }

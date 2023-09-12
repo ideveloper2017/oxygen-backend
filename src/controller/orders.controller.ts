@@ -59,4 +59,15 @@ export class OrdersController {
             return response
         })
     }
+
+    @Get('/last')
+    getLastID() {
+        return this.orderService.getLastID().then(data => {
+            if(data != null ) {
+                return {success: true, data: data.id+1}       
+            }else {
+                return {success: true, data:1}
+            }
+        })
+    }
 }

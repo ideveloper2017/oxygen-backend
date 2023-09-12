@@ -5,11 +5,10 @@ import { PaymentMethods } from "./payment_methods.entity";
 import { OrderItems } from "./order-items.entity";
 import { Payments } from "./payments.entity";
 import { CreditTable } from "./credit-table.entity";
+import Model from "./model.entity";
 
 @Entity('Orders')
-export class Orders  {
-    @Column({unique:true, primary: true})
-    id: number
+export class Orders extends Model {
 
     @ManyToOne(type => Clients, (clients) => clients.orders)
     @JoinColumn({name: 'client_id'})
@@ -27,6 +26,9 @@ export class Orders  {
 
     @Column()
     quantity: number
+
+    @Column({nullable: true})
+    initial_pay: number
 
     @Column()
     total_amount: number

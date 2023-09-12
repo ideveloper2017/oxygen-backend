@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
 import Model from "./model.entity";
 import { Currencies } from "./currencies.entity";
 
@@ -12,6 +12,7 @@ export class ExchangRates extends Model {
     is_default: boolean 
 
     @ManyToOne(() => Currencies, currencies => currencies.exchangeRates)
+    @JoinColumn({name: 'currency_id',})
     currencies: Currencies
 
     @Column()

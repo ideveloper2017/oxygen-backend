@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-export class ExchangeRateDto {
+export class CreatexchangeRateDto {
     @ApiProperty({example: 1220})
     rate_value: number
 

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateOrderDto } from 'src/dtos/order-dto/create-order.dto';
 import { UpdateOrderDto } from 'src/dtos/order-dto/update-order.dto';
+import { Apartments } from 'src/entity/apartments.entity';
 import { CreditTable } from 'src/entity/credit-table.entity';
 import { OrderItems } from 'src/entity/order-items.entity';
 import { Orders } from 'src/entity/orders.entity';
@@ -13,23 +14,24 @@ import { Repository } from 'typeorm';
 export class OrdersService {
     constructor(@InjectRepository(Orders) private readonly ordersRepository: Repository<Orders>){}
 
+    async getLastID() {
+        const lastid = await this.ordersRepository.createQueryBuilder('orders')
+        .orderBy('id', 'DESC')
+        .getOne()
+
+        return lastid
+    }
     async createOrder(createOrderDto: CreateOrderDto) {
         
-        const lastOrderId = await this.ordersRepository .createQueryBuilder('order')
-        .select('MAX(order.id)', 'lastId')
-        .getRawOne();
-
-        console.log(lastOrderId);
         // const apartment = await this.ordersRepository.manager.getRepository(Apartments).findOne({where: {id: createOrderDto.apartment_id}, relations: ['floor.entrance.buildings']})
 
         const payment_method = await this.ordersRepository.manager.getRepository(PaymentMethods).findOne({where: {id: createOrderDto.payment_method_id}})
         
-
         const order = new Orders()
-        order.id = lastOrderId.lastId ? lastOrderId.lastId+1 : 1
         order.client_id = createOrderDto.client_id
         order.user_id = createOrderDto.user_id
         order.payment_method_id = createOrderDto.payment_method_id 
+        order.order_status = createOrderDto.order_status
         order.order_date = new Date()  
         order.total_amount  = 145200000     
         order.quantity = createOrderDto.apartments.length
@@ -40,18 +42,22 @@ export class OrdersService {
         orderItem.order_id = savedOrder.id
         orderItem.apartment_id = createOrderDto.apartment_id
 
-      
-        if(payment_method.name.toLowerCase() === 'rassrochka'){
-            for(let i = 1; i <= createOrderDto.installment_month; i++){
-                const installment = new CreditTable()
-                installment.order_id = savedOrder.id
-                installment.due_amount
-                installment.status
-                installment.due_date
-            }
-        }
-        return savedOrder
+        const price = await this.ordersRepository.manager.getRepository(Apartments).findOne({where: {id: orderItem.apartment_id}, relations: ['floor.entrance.buildings']})
 
+        const total = price.floor.entrance.buildings.mk_price * price.room_space
+        const oneMonthDue = (total - createOrderDto.initial_pay) / createOrderDto.installment_month
+        // console.log(price.floor.entrance.buildings.mk_price);
+        console.log(total-createOrderDto.initial_pay);
+        // if(payment_method.name.toLowerCase() === 'rassrochka'){
+        //     for(let i = 1; i <= createOrderDto.installment_month; i++){
+        //         const installment = new CreditTable()
+        //         installment.order_id = savedOrder.id
+        //         installment.due_amount
+        //         installment.status
+        //         installment.due_date
+        //     }
+        // }
+        return savedOrder
     }
 
     async getOrderList(id: number) {

@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateCurrencyDto } from 'src/dtos/currency-dto/create-currency.dto';
-import { ExchangeRateDto } from 'src/dtos/currency-dto/exchange-rate.dto';
+import { CreatexchangeRateDto } from 'src/dtos/currency-dto/create-exchange-rate.dto';
+import { EditExchangeRateDto } from 'src/dtos/currency-dto/edit-exchange-rate.dto';
 import { CurrenciesService } from 'src/service/currencies.service';
 
 @ApiTags('Currencies')
@@ -21,22 +22,36 @@ export class CurrenciesController {
     return this.currancyService.getCurrencies();
   }
   
-  @ApiOperation({ summary: 'Pul birligini belgilash' })
+  @ApiOperation({summary: 'Pul birligini belgilash' })
   @Patch('/option')
   selectCurrency(@Body() currency: number[]) {
     return this.currancyService.selectCurrency(currency);
   }
 
+// ================================== Valyuta kursi API ================================
 
   @ApiOperation({summary: "valuta kursini kiritish"})
   @Post('/exchange-rate/new')
-  updateExchangeRate(@Body() exchangeRateDtoDto: ExchangeRateDto){
-      return this.currancyService.newRate(exchangeRateDtoDto).then(data => {
+  updateExchangeRate(@Body() exchangeRateDto: CreatexchangeRateDto){
+    return this.currancyService.newRate(exchangeRateDto).then(data => {
         if(data){
           return {success: true, data, message: "Kurs yangilandi"}
         }else {
           return {success: false, message: "Kurs yangilashda xatolik"}
         }
       })
+  }
+
+  @ApiOperation({ summary: 'Valyuta kursini tahrirlash' })
+  @Patch('/exchange-rate/edit/:id')
+  updateRate(@Param('id') id: number, @Body() editCurrencyRateDto: EditExchangeRateDto) {
+    return this.currancyService.updateCurrancyRate(id, editCurrencyRateDto).then(data => {
+      if(data.affected != 0){
+        return {success: true, message: "Kurs o'zgartirildi"}
+      }else {
+        return {success: false, message: "Kurs o'zgartirishda xatolik"}
+
+      }
+    });
   }
 }
