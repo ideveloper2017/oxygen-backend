@@ -36,8 +36,13 @@ export class TownService {
     }
   }
 
-  async findAllTowns() {
-    const towns = await this.townRepository.find({ relations: ['buildings'] });
+  async findAllTowns(id:number) {
+    let towns
+    if(id != 0){
+      towns = await this.townRepository.findOne({where: {id:id}, relations: ['buildings'] });
+    }else {
+      towns = await this.townRepository.find({relations: ['buildings'] });
+    }
     return towns;
   }
 
@@ -50,6 +55,26 @@ export class TownService {
     const deletedTown = await this.townRepository.delete(id);
     return deletedTown;
     }
+
+  async getCountOfBuildingsAndApartmentsInTown(){
+    const result = this.townRepository
+    .createQueryBuilder()
+    .select('town.id, town.name, town.created_at')
+    .addSelect('COUNT(DISTINCT buildings.id)', 'buildingCount')
+    .addSelect('COUNT(DISTINCT apartments.id)', 'apartmentCount')
+    .from(Towns, 'town')
+    .leftJoin('town.buildings', 'buildings')
+    .leftJoin('buildings.entrances', 'entrances')
+    .leftJoin('entrances.floors', 'floors')
+    .leftJoin('floors.apartments', 'apartments')
+    .groupBy('town.id');
+
+    const res = await result.getRawMany();
+
+    return res
+  
+  }
+
 
   async clearDatabase() {
     const connection =  this.townRepository.manager.connection

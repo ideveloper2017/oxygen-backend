@@ -59,12 +59,15 @@ import { FloorsService } from './service/floors.service';
 import { PermissionsService } from './service/permissions.service';
 import { PermissionsModule } from './modules/premissions/premissions.module';
 import { CoreModule } from './core/core.module';
-import { InstallmentPaymentsController } from './controller/installment-payments.controller';
-import { InstallmentPaymentsService } from './service/installment-payments.service';
-import { InstallmentPaymentsModule } from './modules/installment-payments/installment-payments.module';
+import { CreditTableController } from './controller/credit-table.controller';
+import { CreditTableService } from './service/credit-table.service';
+import { CreditTableModule } from './modules/kredit-plan/kredit-plan.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
     ConfigModule.forRoot({
       validationSchema: Joi.object({
         POSTGRES_HOST: Joi.string().required(),
@@ -93,7 +96,8 @@ import { InstallmentPaymentsModule } from './modules/installment-payments/instal
     OrdersModule,
     EntrancesModule,
     FloorsModule,
-    InstallmentPaymentsModule,
+    CoreModule,
+    CreditTableModule,
   ],
   controllers: [
     UsersController,
@@ -114,7 +118,7 @@ import { InstallmentPaymentsModule } from './modules/installment-payments/instal
     OrdersController,
     EntrancesController,
     FloorsController,
-    InstallmentPaymentsController,
+    CreditTableController,
   ],
   providers: [
     UsersService,
@@ -138,7 +142,7 @@ import { InstallmentPaymentsModule } from './modules/installment-payments/instal
     OrdersService,
     EntrancesService,
     FloorsService,
-    InstallmentPaymentsService,
+    CreditTableService,
   ],
 })
 export class AppModule {

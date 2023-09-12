@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="da8d765c-a0d8-43f5-936b-18cba8eef01c" name="frp" url="http://75.119.129.149/">
+        <fileTransfer rootFolder="/oxygenhome.brainsmart.uz" host="75.119.129.149" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

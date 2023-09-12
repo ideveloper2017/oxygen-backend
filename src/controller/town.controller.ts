@@ -28,20 +28,14 @@ export class TownController {
   }
 
   @ApiOperation({ summary: "mavjud turar-joylarni ro'yxatini olish" })
-  @Get('/all')
-  getAllTowns(@Response() res) {
-    return this.townService.findAllTowns().then((data) => {
-      if (data.length != 0) {
-        return res.send({
-          success: true,
-          data: data,
-          message: 'Fetch All Records!',
-        });
+  @Get('/all-one/:id')
+  getAllTowns(@Param('id') id:number) {
+    return this.townService.findAllTowns(id).then((data) => {
+      if (data || data.length > 0) {
+        return {
+          success: true,data,message: 'Fetched data'} 
       } else {
-        return res.send({
-          success: false,
-          message: 'No data found',
-        });
+        return {success: false,message: 'No data found',}
       }
     }).catch(error => console.log(error));
   }
@@ -66,9 +60,23 @@ export class TownController {
         return { success: false, message: 'Turar-joy topilmadi! ' };
       }
       return { success: true, message: "Turar-joy o'chirildi!" };
-    
+      
     })
   }
+
+  @ApiOperation({ summary: "Turar-joylardagi bino va kvartiralar sonini korish" })
+  @Get('/get-count')
+  getCountOfBuildingsAndApartmentsInTown(){
+      return this.townService.getCountOfBuildingsAndApartmentsInTown().then(data => {
+        if(data.length != 0 ){
+          return { success: true, message: "Turar-joy ma'lumotlari",data }
+      }else {
+        return { success: false, message:"Turar-joy ma'lumotlari yoq"}
+  }
+})
+  }
+  
+
 
   @ApiOperation({ summary: `EHTIYOT BO'LAMIZ ⛔⛔⛔ BU REQUEST BAZANI TOZALAB YUBORADI `})
   @Delete('/clear-database')

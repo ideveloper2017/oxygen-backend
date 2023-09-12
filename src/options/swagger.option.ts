@@ -17,4 +17,5 @@ export const swaggerConfig = new DocumentBuilder()
   .addTag('PaymentMethods')
   .addTag('Orders')
   .addTag('OrderItems')
+  .addTag('CreditTable')
   .build();

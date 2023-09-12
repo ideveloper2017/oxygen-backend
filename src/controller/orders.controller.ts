@@ -45,7 +45,7 @@ export class OrdersController {
     @Delete('/delete')
     deleteOrder(@Body() arrayOfId:number[]) {
         return this.orderService.deleteOrder(arrayOfId).then(response => {
-            if(response > 1) {
+            if(response != 0 ) {
                 return {success: true, message: `${response} Orders deleted successfully`}
             }else {
                 return {success: true, message: "order deleted successfully"}
@@ -57,6 +57,17 @@ export class OrdersController {
     acceptOrRejectOrder(@Param('id') id: number){
         return this.orderService.chooseOrder(id).then (response => {
             return response
+        })
+    }
+
+    @Get('/last')
+    getLastID() {
+        return this.orderService.getLastID().then(data => {
+            if(data != null ) {
+                return {success: true, data: data.id+1}       
+            }else {
+                return {success: true, data:1}
+            }
         })
     }
 }

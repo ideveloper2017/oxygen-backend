@@ -1,21 +1,21 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-import Model from "./model.entity";
 import { Clients } from "./clients.entity";
 import { Users } from "./users.entity";
 import { PaymentMethods } from "./payment_methods.entity";
 import { OrderItems } from "./order-items.entity";
 import { Payments } from "./payments.entity";
-import { InstallmentPayments } from "./installment-payments.entity";
+import { CreditTable } from "./credit-table.entity";
+import Model from "./model.entity";
 
 @Entity('Orders')
 export class Orders extends Model {
+
     @ManyToOne(type => Clients, (clients) => clients.orders)
     @JoinColumn({name: 'client_id'})
     clients: Clients;
 
     @Column({type: "integer"})
     client_id: number
-
 
     @ManyToOne(type => Users, (users) => users.orders)
     @JoinColumn({name: 'user_id'})
@@ -27,6 +27,9 @@ export class Orders extends Model {
     @Column()
     quantity: number
 
+    @Column({nullable: true})
+    initial_pay: number
+
     @Column()
     total_amount: number
 
@@ -35,6 +38,9 @@ export class Orders extends Model {
 
     @Column()
     order_date: Date
+    
+    @Column({enum: ["active", "inactive"]})
+    order_status:  string
 
     @ManyToOne((type) => PaymentMethods, paymentMethods => paymentMethods.orders)
     @JoinColumn({name: 'payment_method_id'})
@@ -49,6 +55,6 @@ export class Orders extends Model {
     @OneToMany(() => Payments, payments => payments.orders)
     payments: Payments[]
 
-    @OneToMany(() => InstallmentPayments, installmentPayments => installmentPayments.orders)
-    installmentPayments: InstallmentPayments[]
+    @OneToMany(() => CreditTable, creditTable => creditTable.orders)
+    creditTables: CreditTable[]
 }

@@ -43,7 +43,4 @@ export class PaymentMethodsService {
       return {status: 200, message: "To'lov turi o'chirildi!"}
   }
   
-  
-  
-  
 }

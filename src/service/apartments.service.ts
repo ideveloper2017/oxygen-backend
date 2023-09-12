@@ -32,6 +32,10 @@ export class ApartmentsService {
   return editedApartment  
   }
 
+  async getOneApartment(id: number) {
+    const apartment  = await this.apartmentRepository.findOne({where: {id: id}});
+    return apartment
+  }
 
   async deleteApartment(id: number) {
     const deletedApartment = await this.apartmentRepository.delete(id);
