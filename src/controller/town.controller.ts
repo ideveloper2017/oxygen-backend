@@ -74,8 +74,12 @@ export class TownController {
         return { success: false, message:"Turar-joy ma'lumotlari yoq"}
   }
 })
+}
+  @ApiOperation({ summary: "Home page infolar" })
+  @Get('/homepage')
+  homePageInfos(){
+    return this.townService.homePageDatas()
   }
-  
 
 
   @ApiOperation({ summary: `EHTIYOT BO'LAMIZ ⛔⛔⛔ BU REQUEST BAZANI TOZALAB YUBORADI `})
