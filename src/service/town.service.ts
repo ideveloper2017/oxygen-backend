@@ -41,7 +41,7 @@ export class TownService {
     if(id != 0){
       towns = await this.townRepository.findOne({where: {id:id}, relations: ['buildings'] });
     }else {
-      towns = await this.townRepository.findOne({relations: ['buildings'] });
+      towns = await this.townRepository.find({relations: ['buildings'] });
     }
     return towns;
   }
@@ -57,7 +57,8 @@ export class TownService {
     }
 
   async getCountOfBuildingsAndApartmentsInTown(){
-    const result = this.townRepository.createQueryBuilder()
+    const result = this.townRepository
+    .createQueryBuilder()
     .select('town.id, town.name, town.created_at')
     .addSelect('COUNT(DISTINCT buildings.id)', 'buildingCount')
     .addSelect('COUNT(DISTINCT apartments.id)', 'apartmentCount')

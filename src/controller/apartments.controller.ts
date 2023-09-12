@@ -87,5 +87,18 @@ export class ApartmentsController {
         }
       })
      }
+     @ApiOperation({summary: "Kvartira malumotlarini olish"})
+     @Get('/info/:id')
+     apartmentInfo(@Param('id') id: number) {
+        return this.apartmentsService.getOneApartment(id).then(data => {
+          if(data){
+            return {success: true, data, message: "Apartment info"}
+          }
+          else {
+            return {success: false, message: "Apartment not found"}
+            
+          }
+      })
+     }
 
     }

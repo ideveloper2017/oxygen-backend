@@ -59,7 +59,7 @@ import { FloorsService } from './service/floors.service';
 import { PermissionsService } from './service/permissions.service';
 import { PermissionsModule } from './modules/premissions/premissions.module';
 import { CoreModule } from './core/core.module';
-import { CreditTableController } from './controller/kredit-plan.controller';
+import { CreditTableController } from './controller/credit-table.controller';
 import { CreditTableService } from './service/credit-table.service';
 import { CreditTableModule } from './modules/kredit-plan/kredit-plan.module';
 
