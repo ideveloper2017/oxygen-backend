@@ -17,12 +17,10 @@ export class OrdersService {
   ) {}
 
   async getLastID() {
-    const lastID = await this.ordersRepository
+    return await this.ordersRepository
       .createQueryBuilder('orders')
       .orderBy('id', 'DESC')
       .getOne();
-
-    return lastID;
   }
 
   async createOrder(createOrderDto: CreateOrderDto) {
