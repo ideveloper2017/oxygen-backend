@@ -82,14 +82,15 @@ export class TownService {
   
   }
   async homePageDatas() {
-    const towns = await this.townRepository.createQueryBuilder('towns').getCount()
-    const buildings = await this.townRepository.manager.getRepository(Buildings).createQueryBuilder('buildings').getCount()
-    const orders = await this.townRepository.manager.getRepository(Orders).createQueryBuilder('orders').getCount()
-    const clients = await this.townRepository.manager.getRepository(Clients).createQueryBuilder('clients').getCount()
-    const payments = await this.townRepository.manager.getRepository(Payments).createQueryBuilder('payments').getCount()
-    const roles = await this.townRepository.manager.getRepository(Roles).createQueryBuilder('roles').getCount()
-    const users = await this.townRepository.manager.getRepository(Users).createQueryBuilder('users').getCount()
-    const apartments = await this.townRepository.manager.getRepository(Apartments).createQueryBuilder('apartments').getCount()
+
+    const towns = await this.townRepository.count()
+    const buildings = await this.townRepository.manager.getRepository(Buildings).count()
+    const orders = await this.townRepository.manager.getRepository(Orders).count()
+    const clients = await this.townRepository.manager.getRepository(Clients).count()
+    const payments = await this.townRepository.manager.getRepository(Payments).count()
+    const roles = await this.townRepository.manager.getRepository(Roles).count()
+    const users = await this.townRepository.manager.getRepository(Users).count()
+    const apartments = await this.townRepository.manager.getRepository(Apartments).count()
     const bookedApartments = await this.townRepository.manager.getRepository(Apartments).count({where: {status: 'bron'}})
 
     return {
