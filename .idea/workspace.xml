@@ -5,57 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c125ca06-2697-4dcc-a2d5-b4cffa3c5652" name="Changes" comment="Commit">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/oxygen-backend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/decorators/auth-user.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/decorators/role.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/errors/common-erros.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/auth/jwt-auth.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/auth/jwt.strategy.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/credit-table.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/auth-dto/AuthLoginDto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/currency-dto/create-exchange-rate.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/currency-dto/edit-exchange-rate.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/user-dto/update-user.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/credit-table.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/exchange-rate.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/kredit-plan/kredit-plan.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/credit-table.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/apartments.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/apartments.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/auth/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/currencies.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/currencies.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/installment-payments.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/orders.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/orders.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/town.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/town.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/users.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/database.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtos/order-dto/create-order.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/order-dto/create-order.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtos/user-dto/create-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/user-dto/create-user.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/apartments.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/apartments.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/currencies.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/currencies.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/installment-payments.entity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/order-items.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/order-items.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/orders.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/orders.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/users.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/users.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/auth/jwt.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/auth/jwt.strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/auth-dto/AuthLoginDto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/auth-dto/AuthLoginDto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/auth.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currencies/currencies.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currencies/currencies.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/installment-payments/installment-payments.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/swagger.option.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/swagger.option.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/apartments.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/apartments.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/users.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/options/jwt-service/auth.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/options/jwt-service/auth.service.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/currencies.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/currencies.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/installment-payments.service.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/orders.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/orders.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/payment_methods.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/payment_methods.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/town.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/town.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/users.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,6 +34,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ansor" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -94,31 +59,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/nodejsprojects/oxygen-backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\nodejsprojects\\oxygen-backend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/ansor/Desktop/Oxygen-app/oxygen-backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "ts.external.directory.path": "D:\\nodejsprojects\\oxygen-backend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\nodejsprojects\oxygen-backend\src\common\decorators" />
@@ -140,7 +109,9 @@
       <workItem from="1694061555395" duration="1435000" />
       <workItem from="1694240067173" duration="297000" />
       <workItem from="1694237218392" duration="2336000" />
-      <workItem from="1694497469168" duration="2191000" />
+      <workItem from="1694497469168" duration="4816000" />
+      <workItem from="1694498322878" duration="3193000" />
+      <workItem from="1694500229984" duration="503000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <option name="closed" value="true" />
@@ -230,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694499822508</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1694500083365</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1694500083365</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

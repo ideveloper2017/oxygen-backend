@@ -42,7 +42,7 @@ export class OrdersController {
     }
 
     @ApiOperation({summary: "Order ni o'chirish IDlar ni array ichida berish kerak"})
-    @Delete('/delete')
+    @Post('/delete')
     deleteOrder(@Body() arrayOfId:number[]) {
         return this.orderService.deleteOrder(arrayOfId).then(response => {
             if(response != 0 ) {
