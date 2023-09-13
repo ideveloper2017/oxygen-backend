@@ -9,8 +9,8 @@ import { CommonErrors } from '../common/errors/common-erros';
 @Injectable()
 export class AuthService {
   constructor(
-     private userService: UsersService,
-     private jwtService: JwtService,
+    // private userService: UsersService,
+    private jwtService: JwtService,
   ) {}
 
   async signIn(authLoginDto: AuthLoginDto) {
@@ -34,10 +34,6 @@ export class AuthService {
 
     delete loggedUser.password;
     return loggedUser;
-  }
-
-  public async register(user: CreateUserDto): Promise<any> {
-    return this.userService.createLogin(user);
   }
 
   private async validateUser(authLoginDto: AuthLoginDto) {
