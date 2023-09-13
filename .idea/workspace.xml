@@ -5,57 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c125ca06-2697-4dcc-a2d5-b4cffa3c5652" name="Changes" comment="Commit">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/oxygen-backend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/decorators/auth-user.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/decorators/role.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/errors/common-erros.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/auth/jwt-auth.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/auth/jwt.strategy.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/credit-table.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/auth-dto/AuthLoginDto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/currency-dto/create-exchange-rate.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/currency-dto/edit-exchange-rate.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/user-dto/update-user.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/credit-table.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/exchange-rate.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/kredit-plan/kredit-plan.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/credit-table.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/apartments.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/apartments.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/auth/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/currencies.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/currencies.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/installment-payments.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/orders.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/orders.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/town.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/town.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/users.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/database.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/database.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtos/order-dto/create-order.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/order-dto/create-order.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtos/user-dto/create-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/user-dto/create-user.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/apartments.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/apartments.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/currencies.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/currencies.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/installment-payments.entity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/order-items.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/order-items.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/orders.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/orders.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/users.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/users.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/auth/jwt.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/auth/jwt.strategy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/auth-dto/AuthLoginDto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/auth-dto/AuthLoginDto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/auth.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currencies/currencies.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currencies/currencies.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/installment-payments/installment-payments.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/options/swagger.option.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/options/swagger.option.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/apartments.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/apartments.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/users.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/options/jwt-service/auth.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/options/jwt-service/auth.service.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/currencies.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/currencies.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/installment-payments.service.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/orders.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/orders.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/payment_methods.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/payment_methods.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/town.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/town.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/users.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +100,9 @@
       <workItem from="1694061555395" duration="1435000" />
       <workItem from="1694240067173" duration="297000" />
       <workItem from="1694237218392" duration="2336000" />
-      <workItem from="1694497469168" duration="2191000" />
+      <workItem from="1694497469168" duration="4816000" />
+      <workItem from="1694498322878" duration="3193000" />
+      <workItem from="1694500229984" duration="503000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <option name="closed" value="true" />
@@ -230,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694499822508</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1694500083365</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1694500083365</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

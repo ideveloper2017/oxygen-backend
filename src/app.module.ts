@@ -23,7 +23,6 @@ import { SaleDetailsService } from './service/sale_details.service';
 import { RolesService } from './service/roles.service';
 import { UserRolesService } from './service/user-roles.service';
 import { SalesService } from './service/sales.service';
-import { AuthModule } from './options/jwt-service/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { BuildingsModule } from './modules/buildings/buildings.module';
 import { ApartmentsModule } from './modules/apartments/apartments.module';
@@ -46,7 +45,7 @@ import { CurrenciesModule } from './modules/currencies/currencies.module';
 import { CurrenciesService } from './service/currencies.service';
 import { AuthController } from './controller/auth/auth.controller';
 import { AuthService } from './service/auth.service';
-import { JwtService } from '@nestjs/jwt';
+import { JwtModule, JwtService } from "@nestjs/jwt";
 import { OrdersModule } from './modules/orders/orders.module';
 import { OrdersService } from './service/orders.service';
 import { OrdersController } from './controller/orders.controller';
@@ -62,11 +61,12 @@ import { CoreModule } from './core/core.module';
 import { CreditTableController } from './controller/credit-table.controller';
 import { CreditTableService } from './service/credit-table.service';
 import { CreditTableModule } from './modules/kredit-plan/kredit-plan.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true
+      isGlobal: true,
     }),
     ConfigModule.forRoot({
       validationSchema: Joi.object({
@@ -79,70 +79,72 @@ import { CreditTableModule } from './modules/kredit-plan/kredit-plan.module';
       }),
     }),
     DatabaseModule,
-    AuthModule,
-    UsersModule,
-    BuildingsModule,
-    ApartmentsModule,
-    ClientsModule,
-    PaymentsModule,
-    SaleDetailsModule,
-    SalesModule,
-    RolesModule,
-    PaymentMethodsModule,
-    TownModule,
-    CurrenciesModule,
-    RegionsModule,
-    PermissionsModule,
-    OrdersModule,
-    EntrancesModule,
-    FloorsModule,
-    CoreModule,
-    CreditTableModule,
+
+    // AuthModule,
+    // UsersModule,
+    // BuildingsModule,
+    // ApartmentsModule,
+    // ClientsModule,
+    // PaymentsModule,
+    // SaleDetailsModule,
+    // SalesModule,
+    // RolesModule,
+    // PaymentMethodsModule,
+    // TownModule,
+    // CurrenciesModule,
+    // RegionsModule,
+    // PermissionsModule,
+    // OrdersModule,
+    // EntrancesModule,
+    // FloorsModule,
+    // CoreModule,
+    // CreditTableModule,
   ],
   controllers: [
-    UsersController,
-    ClientsController,
-    ApartmentsController,
-    BuildingsController,
-    RolesController,
-    PriceController,
-    SalesController,
-    PaymentsController,
-    PaymentMethodsController,
-    SaleDetailsController,
-    UserRolesController,
-    TownController,
-    CurrenciesController,
-    RegionsController,
-    AuthController,
-    OrdersController,
-    EntrancesController,
-    FloorsController,
-    CreditTableController,
+    // UsersController,
+    // ClientsController,
+    // ApartmentsController,
+    // BuildingsController,
+    // RolesController,
+    // PriceController,
+    // SalesController,
+    // PaymentsController,
+    // PaymentMethodsController,
+    // SaleDetailsController,
+    // UserRolesController,
+    // TownController,
+    // CurrenciesController,
+    // RegionsController,
+    // AuthController,
+    // OrdersController,
+    // EntrancesController,
+    // FloorsController,
+    // CreditTableController,
   ],
   providers: [
-    UsersService,
-    ClientsService,
-    BuildingsService,
-    ApartmentsService,
-    PriceService,
-    PaymentsService,
-    PaymentMethodsService,
-    SaleDetailsService,
-    RolesService,
-    UserRolesService,
-    SalesService,
-    TownService,
-    CurrenciesService,
-    RegionsService,
-    DistrictsService,
-    AuthService,
-    JwtService,
-    PermissionsService,
-    OrdersService,
-    EntrancesService,
-    FloorsService,
-    CreditTableService,
+
+    // UsersService,
+    // ClientsService,
+    // BuildingsService,
+    // ApartmentsService,
+    // PriceService,
+    // PaymentsService,
+    // PaymentMethodsService,
+    // SaleDetailsService,
+    // RolesService,
+    // UserRolesService,
+    // SalesService,
+    // TownService,
+    // CurrenciesService,
+    // RegionsService,
+    // DistrictsService,
+    // AuthService,
+    // JwtService,
+    // PermissionsService,
+    // OrdersService,
+    // EntrancesService,
+    // FloorsService,
+    // CreditTableService,
   ],
 })
 export class AppModule {
