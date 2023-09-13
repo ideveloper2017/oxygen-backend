@@ -32,9 +32,4 @@ export class AuthController {
   getLoggedUser(@AuthUser() user: any) {
     return this.authService.getLoggedUser(user.userId);
   }
-
-  @Post('register')
-  async register(@Body() user: CreateUserDto): Promise<any> {
-    return this.authService.register(user);
-  }
 }
