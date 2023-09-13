@@ -61,6 +61,7 @@ import { CoreModule } from './core/core.module';
 import { CreditTableController } from './controller/credit-table.controller';
 import { CreditTableService } from './service/credit-table.service';
 import { CreditTableModule } from './modules/kredit-plan/kredit-plan.module';
+import { FileUploadModule } from './file-upload/file-upload.module';
 import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
@@ -68,6 +69,9 @@ import { AuthModule } from './modules/auth/auth.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    ConfigModule.forRoot({isGlobal: true}),
+
+    
     ConfigModule.forRoot({
       validationSchema: Joi.object({
         POSTGRES_HOST: Joi.string().required(),
@@ -79,7 +83,7 @@ import { AuthModule } from './modules/auth/auth.module';
       }),
     }),
     DatabaseModule,
-    AuthModule,
+    // AuthModule,
     UsersModule,
     BuildingsModule,
     ApartmentsModule,
@@ -98,6 +102,7 @@ import { AuthModule } from './modules/auth/auth.module';
     FloorsModule,
     CoreModule,
     CreditTableModule,
+    FileUploadModule,
   ],
   controllers: [
     UsersController,

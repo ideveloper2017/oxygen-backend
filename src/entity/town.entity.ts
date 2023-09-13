@@ -20,7 +20,7 @@ export class Towns extends Model {
   contact_number: string;
 
   @Column({ nullable: true })
-  logo: string;
+  image_link: string;
 
   @OneToMany((type) => Buildings, (building) => building.towns)
   buildings: Buildings[];
